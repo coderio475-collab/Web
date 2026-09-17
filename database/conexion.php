@@ -1,6 +1,6 @@
 <?php
 
-$server = "localhost";
+$server = "localhost:336";
 $username = "root";
 $password = "";
 $database = "riocode";
