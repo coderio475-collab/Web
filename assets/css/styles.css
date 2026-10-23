@@ -403,6 +403,24 @@ html.dark-mode .promo-title .hl-green { color: #9cc08f; }
 .stat-name { font-size: 0.85rem; color: #d9cfbb; }
 
 
+/* ==========================================================================
+   10. NORMATIVA
+   ========================================================================== */
+.dress-card { display: grid; grid-template-columns: minmax(200px, 320px) 1fr; align-items: center; gap: 1.5rem; padding: 1.25rem; }
+.dress-card .img-placeholder { min-height: 220px; }
+.dress-card h3 { font-size: 1.2rem; }
+.dress-list { margin: 0.75rem 0 0; padding: 0; list-style: none; }
+.dress-list li { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.5rem; }
+.dress-list i { font-size: 1.2rem; color: var(--accent); }
+@media (max-width: 767px) { .dress-card { grid-template-columns: 1fr; } }
+
+.norm-list { margin: 0; padding: 0; list-style: none; overflow: hidden; }
+.norm-list li + li { border-top: 1px solid var(--color-border); }
+.norm-list a { display: flex; align-items: center; gap: 0.9rem; padding: 0.95rem 1.25rem; transition: var(--speed) var(--ease); }
+.norm-list a:hover { background: var(--color-surface-2); }
+.norm-icon { flex-shrink: 0; font-size: 1.25rem; color: var(--accent); }
+.norm-arrow { margin-left: auto; color: var(--color-text-muted); transition: var(--speed) var(--ease); }
+.norm-list a:hover .norm-arrow { transform: translateX(4px); color: var(--color-gold); }
 
 
 
