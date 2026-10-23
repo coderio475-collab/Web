@@ -1,248 +1,395 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<?php
+/** PAGINA PRINCIPAL DEL SITIO (index.php)
+ */
+// ---------- Datos de la página: título, descripción y scripts extra que cargará el pie (footer_scripts.php) ----------
+$pageTitle = 'Inicio - Escuela Técnica N.º 1 Bella Unión';
+$pageDescription = "Escuela Técnica N.º 1 'Mtro. Téc. Sergio G. Olaizola' — Bella Unión. Formación técnica para tu futuro.";
+$assetBase = '';
+$footerScriptBefore = 'assets/js/imagenes.js';
+// ---------- Datos dinamicos de la base: eventos de la agenda y títulos de imágenes destacadas (contenido_publico.php) ----------
+require_once __DIR__ . '/assets/php/contenido_publico.php';
+$agendaEventos = obtener_eventos_agenda();
+$titulosImagenes = obtener_titulos_imagenes();
 
-<!-- Tipografias  para títulos, Inter para texto general -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+require_once __DIR__ . "/requires/head.php";
+?>
+  <body data-i18n-title="home.title" data-root="">
 
-<!-- Bootstrap 5.3 (grid + componentes) + Bootstrap Icons -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-<!-- Estilos del sitio -->
-<link rel="stylesheet" href="assets/css/styles.css">
-
-</head>
-<body>
-    <!-- NAVBAR barra de navegación y logo -->
-<nav class="navbar navbar-expand-lg navbar-custom" aria-label="Navegación principal">
-  <div class="container">
-         <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
-             <img src="assets/img/logo-utu-transparent.png" alt="Escudo Escuela Técnica N.º 1" class="brand-crest-img">
-             <span class="brand-text">
-                <h1>Escuela Técnica N.º 1</h1>
-               <span class="brand-sub">"Mtro. Téc. Sergio G. Olaizola" · Bella Unión</span>
-            </span>
-         </a>
-         <!-- Boton para el menú en pantallas movil,tablet (Bootstrap) -->
-         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Abrir menú">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-    <div class="collapse navbar-collapse" id="mainNavbar">
+    <!-- ======================= Encabezado ======================= -->
+    <header class="site-header">
+       
       
-        <!-- buscador de la web  -->
-      <div class="navbar-search">
-        <i class="bi bi-search"></i>
-        <input type="text" placeholder="Buscar..." aria-label="Buscar">
+      <div class="container header-top">
+        <a class="brand" href="index.php">
+          <img
+              src="assets/img/logo-utu-transparent.png"
+              alt="Escudo Escuela Técnica N.º 1"
+              class="brand-crest-img">
+          <div class="brand-text">
+            <span class="brand-name" data-i18n="common.brand.name">Escuela Técnica N.º 1</span>
+            <span class="brand-sub" data-i18n="common.brand.sub">"Mtro. Téc. Sergio G. Olaizola" · Bella Unión</span>
+          </div>
+        </a>
+        <!-- Buscador lo controla assets/js/buscador.js) -->
+        <form class="header-search" id="search-form" role="search" autocomplete="off">
+          <div class="search-field">
+            <i class="bi bi-search" aria-hidden="true"></i>
+            <label for="search-input" class="visually-hidden" data-i18n="common.nav.searchLabel">Buscar en el sitio</label>
+            <input
+                type="search"
+                id="search-input"
+                class="search-input"
+                data-i18n="common.nav.searchPlaceholder"
+                data-i18n-attr="placeholder"
+                placeholder="Buscar en el sitio...">
+            <button
+                class="search-submit"
+                type="submit"
+                data-i18n="common.nav.searchBtn"
+                data-i18n-attr="aria-label"
+                aria-label="Buscar"><i class="bi bi-arrow-right"></i></button>
+          </div>
+          <ul class="search-results" id="search-results"></ul>
+        </form>
+        <!--Botones de idioma y de tema claro/oscuro  ES/PT (i18n.js) y (theme.js) -->
+        <div class="header-tools">
+          <button class="tool-btn" id="lang-btn" type="button" aria-label="Cambiar idioma / Mudar idioma"><span class="flag-icon" aria-hidden="true"></span></button>
+          <button
+              class="tool-btn"
+              id="theme-btn"
+              type="button"
+              data-i18n="common.theme.toggle"
+              data-i18n-attr="aria-label"
+              aria-label="Cambiar entre modo claro y oscuro"><i class="bi bi-moon-stars" aria-hidden="true"></i></button>
+        </div>
       </div>
-
-      <ul class="navbar-nav ms-auto">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Institución</a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="seconds_index/noticias.html">Noticias</a></li>
-                <li><a class="dropdown-item" href="seconds_index/contacto.html">Contacto</a></li>
-                </ul>
-            </li>
-        
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Estudiantes</a>
+       
+      <!-- Menú de navegación: Institución, Estudiantes, Anexos e Inscripciones -->
+      <nav class="navbar navbar-expand-lg navbar-custom" aria-label="Navegación principal">
+        <div class="container">
+          <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#mainNavbar"
+              aria-controls="mainNavbar"
+              aria-expanded="false"
+              data-i18n="common.nav.menuToggle"
+              data-i18n-attr="aria-label"
+              aria-label="Abrir menú"><span class="navbar-toggler-icon"></span></button>
+          <div class="collapse navbar-collapse" id="mainNavbar">
+            <ul class="navbar-nav">
+              <li class="nav-item dropdown">
+                <a
+                    class="nav-link dropdown-toggle"
+                    href="#"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                    data-i18n="common.nav.institucion">Institución</a>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="seconds_index/cursos.html">Cursos</a></li>
-                    <li><a class="dropdown-item" href="seconds_index/horarios.html">Horarios</a></li>
+                  <li>
+                    <a
+                        class="dropdown-item"
+                        href="seconds_index/noticias.php"
+                        data-i18n="common.nav.noticias">Noticias</a>
+                  </li>
+                  <li>
+                    <a
+                        class="dropdown-item"
+                        href="seconds_index/normativa.php"
+                        data-i18n="common.nav.normativa">Normativa</a>
+                  </li>
                 </ul>
-            </li>
-
-            <li class="nav-item"><a class="nav-link" href="seconds_index/anexos.html">Anexos</a></li>
-             <li class="nav-item"><a class="nav-link" href="seconds_index/registro.html">Registro</a></li>
-     </ul>
-    </div>
-  </div>
-</nav>
-
-<!-- HERO, Bloque principal de la institucion -->
-<header class="hero hero-photo" style="background-image:url('assets/img/hero-institucion.jpg');">
-  <div class="container">
-    <div class="hero-content">
-      <span class="hero-eyebrow">Bella Unión</span>
-      <h2>Formación técnica para tu futuro</h2>
-      <p class="lead-text">La Escuela Técnica N.º 1 de Bella Unión brinda educación técnica y tecnológica a estudiantes de la región.</p>
-      <p class="lead-text">Actualmente contamos con 62 grupos distribuidos en cinco turnos: matutino, intermedio, vespertino, turno cuatro y nocturno.</p>
-      <a href="seconds_index/cursos.html" class="btn btn-gold mt-2"><i class="bi bi-mortarboard"></i> Conocé más</a>
-      <div class="hero-stats">
-        <div><div class="stat-num">62</div><div class="stat-label">Grupos activos</div></div>
-        <div><div class="stat-num">5</div><div class="stat-label">Turnos disponibles</div></div>
-        <div><div class="stat-num">3</div><div class="stat-label">Anexos regionales</div></div>
-      </div>
-    </div>
-  </div>
-</header>
-
-<main class="container">
-
-  <!-- Seccion de redireccionamiento a la pagina de Registro  -->
-  <section class="section-pad">
-    <div class="card-tech d-flex flex-column flex-md-row align-items-center justify-content-between gap-3 p-4">
-      <div>
-        <h3 class="h4 mb-1">¿Querés sumarte a la institución?</h3>
-        <p class="mb-0 text-muted">Registrate como estudiante o docente en pocos minutos.</p>
-      </div>
-      <a href="seconds_index/registro.html" class="btn btn-gold flex-shrink-0">Registrarme</a>
-    </div>
-  </section>
-
-  <!-- Seccion de oferta educativa + Proximos eventos  -->
-  <section class="section-pad">
-    <div class="row g-4">
-      <div class="col-lg-7">
-        <div class="feature-square">
-          <div class="feature-square-header">
-            <div><span class="section-kicker">Oferta educativa</span><h3>Cursos y Carreras</h3></div>
-            <i class="bi bi-mortarboard fs-3 text-gold"></i>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                    class="nav-link dropdown-toggle"
+                    href="#"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                    data-i18n="common.nav.estudiantes">Estudiantes</a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="seconds_index/cursos.php" data-i18n="common.nav.cursos">Cursos y Carreras</a>
+                  </li>
+                  <li>
+                    <a
+                        class="dropdown-item"
+                        href="seconds_index/horarios.php"
+                        data-i18n="common.nav.horarios">Horarios y Exámenes</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="seconds_index/anexos.php" data-i18n="common.nav.anexos">Anexos</a>
+              </li>
+              <li class="nav-item">
+                <a
+                    class="nav-link"
+                    href="seconds_index/inscripciones.php"
+                    data-i18n="common.nav.inscripciones">Inscripciones</a>
+              </li>
+            </ul>
           </div>
-          <div class="cursos-chip-grid">
-            <div class="cursos-chip"><div class="chip-icon"><i class="bi bi-journal-bookmark"></i></div><div class="chip-label">EBI · Educación Básica Integrada</div></div>
-            <div class="cursos-chip"><div class="chip-icon"><i class="bi bi-briefcase"></i></div><div class="chip-label">FPB · Formación Profesional Básica</div></div>
-            <div class="cursos-chip"><div class="chip-icon"><i class="bi bi-laptop"></i></div><div class="chip-label">BT · Bachillerato Tecnológico</div></div>
-            <div class="cursos-chip"><div class="chip-icon"><i class="bi bi-tools"></i></div><div class="chip-label">BTP · Bachillerato Técnico Profesional</div></div>
-            <div class="cursos-chip"><div class="chip-icon"><i class="bi bi-gear"></i></div><div class="chip-label">CTT · Cursos Técnicos Terciarios</div></div>
-            <div class="cursos-chip"><div class="chip-icon"><i class="bi bi-people"></i></div><div class="chip-label">Capacitaciones</div></div>
-          </div>
-          <div class="text-center mt-3"><a href="seconds_index/cursos.html" class="btn btn-outline-gold btn-sm">Ver toda la oferta educativa <i class="bi bi-arrow-right"></i></a></div>
         </div>
-      </div>
-      <div class="col-lg-5">
-        <div class="feature-square">
-          <div class="feature-square-header">
-            <div><span class="section-kicker">Agenda</span><h3>Próximos Eventos</h3></div>
-            <i class="bi bi-calendar-event fs-3 text-gold"></i>
-          </div>
-          <div class="agenda-list">
-            <div class="agenda-row"><div class="agenda-date"><span class="day">12</span><span class="mon">Ago</span></div><div><h4>Charla de orientación vocacional</h4><p class="small text-muted mb-0">Salón de actos · 18:00 hs</p></div></div>
-            <div class="agenda-row"><div class="agenda-date"><span class="day">20</span><span class="mon">Ago</span></div><div><h4>Feria de talleres y oficios</h4><p class="small text-muted mb-0">Patio central · 09:00 hs</p></div></div>
-            <div class="agenda-row"><div class="agenda-date"><span class="day">02</span><span class="mon">Sep</span></div><div><h4>Cierre de inscripciones EBI</h4><p class="small text-muted mb-0">Bedelía · Todo el día</p></div></div>
+      </nav>
+    </header>
+
+   
+    <!-- ======================= HERO (foto de la institución) =======================
+     assets/css/styles.css (.hero-photo). -->
+    <header class="hero hero-photo">
+      <img class="managed-image" src="assets/php/imagen.php?ubicacion=hero_institucion" alt="">
+      <div class="container">
+        <div class="hero-inner">
+          <div class="hero-content">
+            <span class="hero-eyebrow" data-i18n="home.hero.eyebrow">Bella Unión</span>
+            <h1 data-i18n="home.hero.title">Formación técnica para tu futuro</h1>
+            <p class="lead-text" data-i18n="home.hero.lead">La Escuela Técnica N.º 1 de Bella Unión brinda educación técnica y tecnológica a estudiantes de la región.</p>
+            <p class="lead-text" data-i18n="home.hero.stats">Actualmente contamos con 62 grupos distribuidos en cinco turnos: matutino, intermedio, vespertino, turno cuatro y nocturno.</p>
+            <a href="seconds_index/cursos.php" class="btn btn-gold mt-2"><i class="bi bi-mortarboard"></i> <span data-i18n="home.hero.cta">Conocé más</span></a>
+            <!-- Cifras de la portada -->
+            <div class="hero-stats">
+              <div>
+                <div class="stat-num">83</div>
+                <div class="stat-label" data-i18n="home.hero.stat0">Cursos</div>
+              </div>
+              <div>
+                <div class="stat-num">62</div>
+                <div class="stat-label" data-i18n="home.hero.stat1">Grupos activos</div>
+              </div>
+              <div>
+                <div class="stat-num">5</div>
+                <div class="stat-label" data-i18n="home.hero.stat2">Turnos disponibles</div>
+              </div>
+              <div>
+                <div class="stat-num">3</div>
+                <div class="stat-label" data-i18n="home.hero.stat3">Anexos regionales</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </header>
+      
+    <!-- ======================= CONTENIDO PRINCIPAL ======================= -->
+    <main class="container">
 
-  <!-- Seccion noticias recientes -->
-  <section class="section-pad">
-    <span class="section-kicker">Novedades</span>
-    <h2 class="section-title">Noticias Recientes</h2>
-    <div class="section-title-rule"></div>
-    <div class="row g-3">
-      <div class="col-md-6">
-        <div class="card-tech h-100 d-flex flex-column gap-3">
-          <div class="img-placeholder"><i class="bi bi-image"></i><span>Imagen — próximamente</span></div>
-          <div>
-            <span class="status-pill status-abierto mb-2 d-inline-block">Institucional</span>
-            <h4>Comienzan las inscripciones para el ciclo 2027</h4>
-            <p class="small text-muted mb-0">📅 Publicado el 18 de Julio, 2026</p>
+      <!-- ======================= PANELES: CURSOS Y CARRERAS + BECAS ======================= -->
+  
+      <section class="pt-5" aria-label="Accesos principales">
+        <div class="row g-4">
+          <div class="col-lg-7">
+            <div class="promo-panel">
+              <span class="promo-kicker" data-i18n="home.promo.cursos.kicker">¡Estudiá en UTU!</span>
+              <h2 class="promo-title" data-i18n="home.promo.cursos.title" data-i18n-html>Descubrí los <span class="hl-gold">cursos y carreras</span> que <span class="hl-green">UTU</span> tiene para vos</h2>
+              <p class="promo-text" data-i18n="home.promo.cursos.text" data-i18n-html>Visitá <strong>Estudiá en UTU</strong> para conocer toda nuestra oferta educativa por orientaciones, departamento en donde vivís y grado de estudio.</p>
+              <a href="seconds_index/cursos.php" class="btn btn-gold"><i class="bi bi-hand-index-thumb"></i> <span data-i18n="home.promo.cursos.btn">Ingresá y descubrí más</span></a>
+            </div>
+          </div>
+          <div class="col-lg-5">
+             <!-- Panel de becas -->
+            <div class="promo-panel promo-panel--becas">
+              <span class="promo-kicker" data-i18n="home.promo.becas.kicker">¡Apoyo estudiantil!</span>
+              <h2 class="promo-title" data-i18n="home.promo.becas.title" data-i18n-html>Conocé las <span class="hl-green">becas</span> disponibles</h2>
+              <p class="promo-text" data-i18n="home.promo.becas.text">Informate sobre las becas y apoyos económicos para estudiantes.</p>
+              <a href="https://becas.edu.uy/" class="btn btn-gold"><i class="bi bi-award"></i> <span data-i18n="home.promo.becas.btn">Ver becas</span></a>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col-md-6">
-        <div class="card-tech h-100 d-flex flex-column gap-3">
-          <div class="img-placeholder"><i class="bi bi-image"></i><span>Imagen — próximamente</span></div>
-          <div>
-            <span class="status-pill status-media mb-2 d-inline-block">Investigación</span>
-            <h4>Proyecto estudiantil de energía solar recibe apoyo regional</h4>
-            <p class="small text-muted mb-0">📅 Publicado el 10 de Junio, 2026</p>
+      </section>
+
+      <!-- ======================= PANEL: INSCRIBITE POR UN CUPO ======================= -->
+      <section class="pt-4" aria-label="Inscripciones">
+        <div class="promo-wide">
+          <div class="d-flex align-items-center gap-3">
+            <div class="promo-wide-icon"><i class="bi bi-pencil-square" aria-hidden="true"></i></div>
+            <div>
+              <h2 data-i18n="home.inscribite.title">Inscribite por un cupo en nuestros cursos</h2>
+              <p data-i18n="home.inscribite.text">Reservá tu lugar completando el formulario en línea.</p>
+            </div>
+          </div>
+          <a href="seconds_index/inscripciones.php" class="btn btn-gold"><span data-i18n="home.inscribite.btn">Quiero inscribirme</span></a>
+        </div>
+      </section>
+
+      <!-- ======================= AGENDA + PANEL DE IMAGENES ======================= -->
+      <section class="pt-5" aria-label="Agenda">
+        <div class="row g-4 align-items-stretch">
+          <div class="col-lg-7">
+            <div class="agenda-card">
+              <div class="agenda-heading">
+                <i class="bi bi-calendar-event" aria-hidden="true"></i>
+                <span data-i18n="home.agenda.title">Agenda</span>
+              </div>
+               <!-- Eventos DE AGENDA -->
+              <div class="agenda-list">
+                <?php /* Una fila por cada evento de la agenda  */ ?>
+                <?php foreach ($agendaEventos as $evento): ?>
+                  <div class="agenda-row">
+                    <span class="agenda-date"><?= htmlspecialchars(date('d/m', strtotime($evento['fecha'])), ENT_QUOTES, 'UTF-8') ?></span>
+                    <p<?= atributo_i18n_agenda($evento) ?>><?= htmlspecialchars($evento['titulo'], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?></p>
+                  </div>
+                <?php endforeach; ?>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-5">
+             
+            <!-- PANEL DE IMAGENES Q SE MUEVUEN (Bootstrap Carrousel) -->
+            <div class="agenda-carousel">
+              <div
+                  id="homeCarousel"
+                  class="carousel slide"
+                  data-bs-ride="carousel"
+                  data-bs-interval="3500"
+                  data-bs-pause="false">
+                <div class="carousel-indicators">
+                  <button
+                      type="button"
+                      data-bs-target="#homeCarousel"
+                      data-bs-slide-to="0"
+                      class="active"
+                      aria-current="true"
+                      aria-label="1"></button>
+                  <button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="1" aria-label="2"></button>
+                  <button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="2" aria-label="3"></button>
+                </div>
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <div class="img-placeholder">
+                      <img class="managed-image" src="assets/php/imagen.php?ubicacion=portada_agenda_1" alt="Imagen institucional">
+                      <i class="bi bi-images"></i>
+                      <span data-i18n="common.imgPlaceholder">Imagen institucional — próximamente</span>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <div class="img-placeholder">
+                      <img class="managed-image" src="assets/php/imagen.php?ubicacion=portada_agenda_2" alt="Imagen institucional">
+                      <i class="bi bi-images"></i>
+                      <span data-i18n="common.imgPlaceholder">Imagen institucional — próximamente</span>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <div class="img-placeholder">
+                      <img class="managed-image" src="assets/php/imagen.php?ubicacion=portada_agenda_3" alt="Imagen institucional">
+                      <i class="bi bi-images"></i>
+                      <span data-i18n="common.imgPlaceholder">Imagen institucional — próximamente</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="text-center mt-4"><a href="seconds_index/noticias.html" class="btn btn-outline-gold">Ver todas las noticias <i class="bi bi-arrow-right"></i></a></div>
-  </section>
+      </section>
 
+      <!-- ======================= DESTACADOS + NOTICIAS RECIENTES ======================= -->
+      <section class="pt-5" aria-label="Noticias destacadas">
+        <span class="section-kicker" data-i18n="home.news.kicker">Destacados</span>
+        <h2 class="section-title" data-i18n="home.news.title">Noticias recientes</h2>
+         
+        <!-- apartado noticia principal destacada -->
+        <div class="featured-news">
+          <a href="seconds_index/noticias.php" class="featured-item featured-item--big">
+            <div class="img-placeholder">
+              <img class="managed-image" src="assets/php/imagen.php?ubicacion=portada_noticia_principal" alt="Noticia destacada">
+              <i class="bi bi-camera"></i>
+              <span data-i18n="common.imgPlaceholder">Imagen institucional — próximamente</span>
+            </div>
 
-
-  <!-- Seccion  quienes somos texto + misión/visión  -->
-  <section class="section-pad">
-    <div class="row g-5 align-items-start">
-      <div class="col-lg-6">
-        <span class="section-kicker">Quiénes somos</span>
-        <h2 class="section-title">Sobre Nuestra Escuela</h2>
-        <div class="section-title-rule"></div>
-        <p>Brindamos educación pública de calidad, comprometida con el desarrollo personal y profesional de nuestros estudiantes.</p>
-        <ul class="list-unstyled mt-3">
-          <li class="mb-2"><i class="bi bi-check-circle-fill text-gold me-2"></i>62 grupos distribuidos en cinco turnos.</li>
-          <li class="mb-2"><i class="bi bi-check-circle-fill text-gold me-2"></i>Propuesta educativa diversa y actualizada.</li>
-          <li class="mb-2"><i class="bi bi-check-circle-fill text-gold me-2"></i>Docentes comprometidos con tu formación.</li>
-          <li class="mb-2"><i class="bi bi-check-circle-fill text-gold me-2"></i>Vínculo permanente con la comunidad y el entorno productivo.</li>
-        </ul>
-        <div class="card-tech d-flex align-items-center gap-3 mt-4">
-          <div class="card-icon mb-0"><i class="bi bi-telephone"></i></div>
-          <div><p class="small text-muted mb-0">Por consultas comunicate con nosotros</p><p class="h5 mb-0 text-gold">4779 2025</p></div>
+            <div class="featured-caption">
+              <span class="featured-tag" data-i18n="home.news.tag">Noticias</span>
+              <h3<?= atributo_i18n_titulo_destacado('portada_noticia_principal', $titulosImagenes) ?>><?= htmlspecialchars(titulo_destacado('portada_noticia_principal', $titulosImagenes), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?></h3>
+            </div>
+          </a>
+          <!-- apartado noticia destacada 1, 2 y 3 mas chicas -->
+          <a href="seconds_index/noticias.php" class="featured-item">
+            <div class="img-placeholder"><img class="managed-image" src="assets/php/imagen.php?ubicacion=portada_noticia_1" alt="Noticia destacada 1"><i class="bi bi-camera"></i></div>
+            <div class="featured-caption">
+              <h3<?= atributo_i18n_titulo_destacado('portada_noticia_1', $titulosImagenes) ?>><?= htmlspecialchars(titulo_destacado('portada_noticia_1', $titulosImagenes), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?></h3>
+            </div>
+          </a>
+          <a href="seconds_index/noticias.php" class="featured-item">
+            <div class="img-placeholder"><img class="managed-image" src="assets/php/imagen.php?ubicacion=portada_noticia_2" alt="Noticia destacada 2"><i class="bi bi-camera"></i></div>
+            <div class="featured-caption">
+              <h3<?= atributo_i18n_titulo_destacado('portada_noticia_2', $titulosImagenes) ?>><?= htmlspecialchars(titulo_destacado('portada_noticia_2', $titulosImagenes), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?></h3>
+            </div>
+          </a>
+          <a href="seconds_index/noticias.php" class="featured-item">
+            <div class="img-placeholder"><img class="managed-image" src="assets/php/imagen.php?ubicacion=portada_noticia_3" alt="Noticia destacada 3"><i class="bi bi-camera"></i></div>
+            <div class="featured-caption">
+              <h3<?= atributo_i18n_titulo_destacado('portada_noticia_3', $titulosImagenes) ?>><?= htmlspecialchars(titulo_destacado('portada_noticia_3', $titulosImagenes), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?></h3>
+            </div>
+          </a>
         </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="about-box"><h3 class="h5">Misión</h3><p class="mb-0">Formar profesionales líderes mediante una educación de calidad basada en la innovación tecnológica, el rigor técnico y un fuerte compromiso ético con el desarrollo de la comunidad.</p></div>
-        <div class="about-box mb-0"><h3 class="h5">Visión</h3><p class="mb-0">Ser referentes regionales en formación técnica, destacando por la excelencia de nuestros egresados y el vínculo con el entorno productivo local.</p></div>
-      </div>
-    </div>
-  </section>
+      </section>
 
-  <!-- Seccion de los 3 anexos   -->
-  <section class="section-pad">
-    <span class="section-kicker">Presencia regional</span>
-    <h2 class="section-title">Nuestros Anexos</h2>
-    <div class="section-title-rule"></div>
-    <div class="row g-3">
-      <div class="col-md-4"><div class="card-tech h-100"><div class="card-icon"><i class="bi bi-geo-alt"></i></div><h4 class="h6">Anexo Polideportivo Bella Unión</h4><p class="small text-muted mb-0">Ubicado en Avenida Artigas y Martín Dermit.</p></div></div>
-      <div class="col-md-4"><div class="card-tech h-100"><div class="card-icon"><i class="bi bi-geo-alt"></i></div><h4 class="h6">Anexo Baltasar Brum</h4><p class="small text-muted mb-0">Ubicado en José Batlle y Ordóñez, entre 25 de Agosto y Sixto Fleitas.</p></div></div>
-      <div class="col-md-4"><div class="card-tech h-100"><div class="card-icon"><i class="bi bi-geo-alt"></i></div><h4 class="h6">Anexo Tomás Gomensoro</h4><p class="small text-muted mb-0">Ubicado en 25 de Agosto y Manuel Jesús González.</p></div></div>
-    </div>
-    <div class="text-center mt-4"><a href="seconds_index/anexos.html" class="btn btn-outline-gold">Ver todas las sedes <i class="bi bi-arrow-right"></i></a></div>
-  </section>
-
-</main>
-
-
-<!--  FOOTER  -->
-<footer class="main-footer">
-  <div class="container">
-    <div class="footer-brand">
-      <img src="assets/img/logo-utu-transparent.png" alt="Escudo Escuela Técnica N.º 1" class="brand-crest-img">
-      <div><h2>Escuela Técnica N.º 1</h2><span class="brand-sub">"Mtro. Téc. Sergio G. Olaizola" · Bella Unión</span></div>
-    </div>
-    <div class="row g-4">
-      <div class="col-md-4">
-        <h3>Contacto Sede</h3>
-        <p><i class="bi bi-geo-alt me-1"></i> Pedro Acosta y Avenida Artigas, Bella Unión</p>
-        <p><i class="bi bi-telephone me-1"></i> 4779 2025</p>
-        <p><i class="bi bi-envelope me-1"></i> info@utu.edu.uy</p>
-      </div>
-      <div class="col-md-4">
-        <h3>Atención al Estudiante</h3>
-        <p><i class="bi bi-clock me-1"></i> Lunes a Viernes de 08:00 a 20:00 hs</p>
-        <p><i class="bi bi-envelope me-1"></i> secretaria@utu.edu.uy</p>
-      </div>
-      <div class="col-md-4">
-        <h3>Seguinos en nuestras redes</h3>
-        <div class="footer-social">
-          <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-          <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-          <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+      <!-- =======================APARTADO DE INTERÉS ======================= -->
+      <section class="pt-5" aria-label="De interés">
+        <div class="interest-box">
+          <h2 class="section-title" data-i18n="home.interes.title">De interés</h2>
+          <!-- enlaces de interes: cursos, inscripciones, horarios, becas, anexos, noticias, normativa, estudiá en UTU, política de privacidad y presentación -->
+          <div class="interest-grid">
+            <a href="seconds_index/cursos.php" class="interest-tile"><i class="bi bi-mortarboard" aria-hidden="true"></i><span data-i18n="home.interes.cursos">Cursos y Carreras</span></a>
+            <a href="seconds_index/inscripciones.php" class="interest-tile"><i class="bi bi-pencil-square" aria-hidden="true"></i><span data-i18n="home.interes.inscrip">Inscripciones</span></a>
+            <a href="seconds_index/horarios.php" class="interest-tile"><i class="bi bi-clock" aria-hidden="true"></i><span data-i18n="home.interes.horarios">Horarios</span></a>
+            <a href="https://becas.edu.uy/"| class="interest-tile"><i class="bi bi-award" aria-hidden="true"></i><span data-i18n="home.interes.becas">Becas</span></a>
+            <a href="seconds_index/horarios.php#examenes" class="interest-tile"><i class="bi bi-file-earmark-text" aria-hidden="true"></i><span data-i18n="home.interes.examenes">Exámenes</span></a>
+            <a href="seconds_index/anexos.php" class="interest-tile"><i class="bi bi-geo-alt" aria-hidden="true"></i><span data-i18n="home.interes.anexos">Anexos</span></a>
+            <a href="seconds_index/noticias.php" class="interest-tile"><i class="bi bi-newspaper" aria-hidden="true"></i><span data-i18n="home.interes.noticias">Noticias</span></a>
+            <a href="seconds_index/normativa.php" class="interest-tile"><i class="bi bi-journal-text" aria-hidden="true"></i><span data-i18n="home.interes.normativa">Normativa</span></a>
+            <a href="https://www.utu.edu.uy/estudia/" class="interest-tile" target="_blank" rel="noopener"><i class="bi bi-search" aria-hidden="true"></i><span data-i18n="home.interes.estudia">Estudiá en UTU</span></a>
+            <a
+                href="https://www.utu.edu.uy/wp-content/themes/balpadraUTU/src/documents/politica%20de%20privacidad.pdf"
+                class="interest-tile"
+                target="_blank"
+                rel="noopener"><i class="bi bi-shield-check" aria-hidden="true"></i><span data-i18n="home.interes.privacidad">Política de privacidad</span></a>
+            <a
+                href="https://www.utu.edu.uy/wp-content/themes/balpadraUTU/src/documents/encuentros/23oct25-litoralnorte/Escuela%20T%C3%A9cnica%20%C2%ABMtro%20Sergio%20Gonz%C3%A1lez%20Olaizola%C2%BB%20%E2%80%93%20Bella%20Uni%C3%B3n.pdf?_t=1761659170"
+                class="interest-tile"
+                target="_blank"
+                rel="noopener"><i class="bi bi-file-earmark-slides" aria-hidden="true"></i><span data-i18n="home.interes.presentacion">Presentación</span></a>
+          </div>
         </div>
-      </div>
-    </div>
-    <div class="footer-bottom"><p class="mb-0">&copy; 2026 Escuela Técnica N.º 1 "Mtro. Téc. Sergio G. Olaizola" — Bella Unión. Todos los derechos reservados.</p></div>
-  </div>
-</footer>
+      </section>
 
+      <!-- ======================= NUESTRAS CIFRAS  ======================= -->
+      <section class="section-pad" aria-label="Nuestras cifras">
+        <div class="stats-band">
+          <h2 class="section-title" data-i18n="home.stats.title">Nuestras cifras</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <i class="bi bi-journal-bookmark" aria-hidden="true"></i>
+              <div class="stat-value">83</div>
+              <div class="stat-name" data-i18n="home.stats.cursos">Cursos</div>
+            </div>
+            <div class="stat-item">
+              <i class="bi bi-collection" aria-hidden="true"></i>
+              <div class="stat-value">62</div>
+              <div class="stat-name" data-i18n="home.stats.grupos">Grupos activos</div>
+            </div>
+            <div class="stat-item">
+              <i class="bi bi-people" aria-hidden="true"></i>
+              <div class="stat-value">1215</div>
+              <div class="stat-name" data-i18n="home.stats.estudiantes">Estudiantes de la institución</div>
+            </div>
+            <div class="stat-item">
+              <i class="bi bi-geo-alt" aria-hidden="true"></i>
+              <div class="stat-value">3</div>
+              <div class="stat-name" data-i18n="home.stats.anexos">Anexos</div>
+            </div>
+            <div class="stat-item">
+              <i class="bi bi-person-workspace" aria-hidden="true"></i>
+              <div class="stat-value">120</div>
+              <div class="stat-name" data-i18n="home.stats.docentes">Funcionarios docentes</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
 
-<!-- Bootstrap  (menú , dropdowns, pestañas) + script  -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="assets/js/main.js"></script>
-
-
-
-
-</body>
-</html>
+<?php /* require de footer y scripts  */ ?>
+<?php require_once __DIR__ . "/requires/footer_scripts.php"; ?>
