@@ -84,8 +84,9 @@ html.dark-mode {
 /* ==========================================================================
    2. BASE
    ========================================================================== */
-html { height: 100%; }
-[hidden] { display: none !important; }   
+  html:not(.ready) body { opacity: 0; }
+  html { height: 100%; }
+  [hidden] { display: none !important; }   
 
 body {
   font-family: var(--font-body);

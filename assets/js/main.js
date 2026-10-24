@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // 1) inicializacion de tema e idioma
   if (window.SiteTheme) window.SiteTheme.init();
-  if (window.SiteI18n) window.SiteI18n.init();
 
   // 2) Enlace activo del menú 
   var current = location.pathname.split('/').pop() || 'index.php';

@@ -328,6 +328,7 @@ require_once __DIR__ . '/../requires/head.php';
         </div>
       </section>
     </main>
+<?php
     $footerScriptAfter = 'assets/js/cursos.js';
     require_once __DIR__ . '/../requires/footer_scripts.php';
-    ?>
+?>
