@@ -1,81 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Registro - Escuela Técnica N.º 1 Bella Unión</title>
-        <meta name="description" content="Formulario de registro para estudiantes y docentes de la Escuela Técnica N.º 1 de Bella Unión.">
-        <!-- Tipografías  para títulos, Inter para texto general -->
-            <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-        <!-- Bootstrap 5.3 (grid + componentes) + Bootstrap Icons -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-        <!-- Estilos del sitio -->
-        <link rel="stylesheet" href="../assets/css/styles.css">
-    <style>
-         /* Formularios  */
-        .form-shell { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); box-shadow: var(--shadow-soft); padding: 2rem; max-width: 720px; margin-inline: auto; }
-        .form-control, .form-select { border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: .55rem .85rem; }
-        .form-control:focus, .form-select:focus { border-color: var(--color-gold); box-shadow: 0 0 0 3px rgba(198,154,63,.18); }
-        .form-label { font-weight: 600; font-size: .9rem; color: var(--color-primary); }
-       
-        /* Mensaje de exito tras "enviar" */
-        .success-message { display: none; background: rgba(75,107,70,.12); border-left: 4px solid var(--color-green); color: #37502f; padding: .9rem 1.1rem; border-radius: var(--radius-sm); margin-bottom: 1.2rem; }
-        .success-message.show { display: block; }
+<?php
+/**
+ * Formularios  para reservar cupos estudiantiles o enviar solicitudes docentes
+ * 
+ */
+// ---------- Datos de la página (título y descripción para el <head>) y ruta base de los recursos ----------
+$pageTitle = 'Inscripciones - Escuela Técnica N.º 1 Bella Unión';
+$pageDescription = 'Formulario de inscripción para reservar cupos en la Escuela Técnica N.º 1 de Bella Unión.';
+$assetBase = '../';
+// ---------- Inicio ----------
+require_once __DIR__ . '/../requires/head.php';
+?>    <body >
+      <!-- ======================= Encabezado ======================= -->
+    <?php  require_once __DIR__ . '/../requires/header.php'; ?>
 
-        .nav-pills-gold .nav-link { color: var(--color-primary); border: 1px solid var(--color-border); border-radius: var(--radius-sm); margin-right: .5rem; margin-bottom: .5rem; font-weight: 600; font-size: .9rem; }
-        .nav-pills-gold .nav-link.active { background-color: var(--color-gold); color: var(--color-primary); border-color: var(--color-gold); }
-        .btn-gold { background-color: var(--color-gold); color: var(--color-primary); border: 1px solid var(--color-gold); font-weight: 600; }
-        .btn-gold:hover, .btn-gold:focus { background-color: var(--color-primary); color: var(--color-surface); border-color: var(--color-primary); }
 
-    </style>
-    
-    </head>
-    <body>
-
-        <!-- NAVBAR barra de navegación y logo -->
-        <nav class="navbar navbar-expand-lg navbar-custom" aria-label="Navegación principal">
-        <div class="container">
-            <a class="navbar-brand d-flex align-items-center gap-2" href="../index.html">
-            <img src="../assets/img/logo-utu-transparent.png" alt="Escudo Escuela Técnica N.º 1" class="brand-crest-img">
-            <span class="brand-text">
-                <h1>Escuela Técnica N.º 1</h1>
-                <span class="brand-sub">"Mtro. Téc. Sergio G. Olaizola" · Bella Unión</span>
-            </span>
-            </a>
-            
-            <!-- Botón para el menú en pantallas moviles,tablet (Bootstrap) -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Abrir menú">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="mainNavbar">
-            
-                <!-- buscador de la web -->
-            <div class="navbar-search">
-                <i class="bi bi-search"></i>
-                <input type="text" placeholder="Buscar..." aria-label="Buscar">
-            </div>
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Institución</a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="noticias.html">Noticias</a></li>
-                    <li><a class="dropdown-item" href="contacto.html">Contacto</a></li>
-                </ul>
-                </li>
-                <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Estudiantes</a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="cursos.html">Carreras</a></li>
-                    <li><a class="dropdown-item" href="horarios.html">Horarios</a></li>
-                </ul>
-                </li>
-                <li class="nav-item"><a class="nav-link" href="anexos.html">Anexos</a></li>
-                <li class="nav-item"><a class="nav-link active" href="registro.html">Registro</a></li>
-            </ul>
-            </div>
-        </div>
-        </nav>
+      
 
          <!-- Hero bloque principal -->
         <section class="hero">
@@ -170,44 +109,12 @@
 
   </div>
 </main>
-
-
-        
-    <!-- FOOTER -->
-    <footer class="main-footer">
-    <div class="container">
-        <div class="footer-brand">
-        <img src="../assets/img/logo-utu-transparent.png" alt="Escudo Escuela Técnica N.º 1" class="brand-crest-img">
-        <div><h2>Escuela Técnica N.º 1</h2><span class="brand-sub">"Mtro. Téc. Sergio G. Olaizola" · Bella Unión</span></div>
-        </div>
-        <div class="row g-4">
-        <div class="col-md-4">
-            <h3>Contacto Sede</h3>
-            <p><i class="bi bi-geo-alt me-1"></i> Pedro Acosta y Avenida Artigas, Bella Unión</p>
-            <p><i class="bi bi-telephone me-1"></i> 4779 2025</p>
-            <p><i class="bi bi-envelope me-1"></i> info@utu.edu.uy</p>
-        </div>
-        <div class="col-md-4">
-            <h3>Atención al Estudiante</h3>
-            <p><i class="bi bi-clock me-1"></i> Lunes a Viernes de 08:00 a 20:00 hs</p>
-            <p><i class="bi bi-envelope me-1"></i> secretaria@utu.edu.uy</p>
-        </div>
-        <div class="col-md-4">
-            <h3>Seguinos en nuestras redes</h3>
-            <div class="footer-social">
-            <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-            <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-            <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
-            </div>
-        </div>
-        </div>
-        <div class="footer-bottom"><p class="mb-0">&copy; 2026 Escuela Técnica N.º 1 "Mtro. Téc. Sergio G. Olaizola" — Bella Unión. Todos los derechos reservados.</p></div>
-    </div>
-    </footer>
-
-    <!-- Bootstrap (menú , dropdowns, pestañas) + script  -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../assets/js/main.js"></script>
-
-</body>
-</html>
+ 
+  
+   
+   <?php /* Pie de página y scripts  (footer_scripts.php) */ ?>
+  <?php
+$footerScriptAfter = 'assets/js/inscripciones.js';
+$footerScriptAfter2 = 'assets/js/docentes.js';
+require_once __DIR__ . '/../requires/footer_scripts.php';
+?>
