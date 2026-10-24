@@ -125,6 +125,41 @@ if ($autenticado) {
                 redirigir_admin('docentes', 'Solicitud docente cancelada.');
             }
 
+            if ($accion === 'guardar_textos_vestimenta') {
+                $textos = $_POST['textos'] ?? null;
+                if (!is_array($textos)) {
+                    throw new RuntimeException('Completá los cuatro textos de vestimenta.');
+                }
+
+                $valores = [];
+                foreach (TEXTOS_VESTIMENTA as $ubicacion => $_) {
+                    $valor = $textos[$ubicacion] ?? null;
+                    if (!is_string($valor) || ($valor = limpiar_texto($valor)) === '' || mb_strlen($valor) > 180) {
+                        throw new RuntimeException('Completá los cuatro textos con un máximo de 180 caracteres cada uno.');
+                    }
+                    $valores[$ubicacion] = $valor;
+                }
+
+                $pdo->beginTransaction();
+                try {
+                    $stmt = $pdo->prepare(
+                        'INSERT INTO titulos_imagenes (ubicacion, titulo)
+                         VALUES (:ubicacion, :titulo)
+                         ON DUPLICATE KEY UPDATE titulo = VALUES(titulo)'
+                    );
+                    foreach ($valores as $ubicacion => $titulo) {
+                        $stmt->execute([':ubicacion' => $ubicacion, ':titulo' => $titulo]);
+                    }
+                    $pdo->commit();
+                } catch (Throwable $e) {
+                    if ($pdo->inTransaction()) {
+                        $pdo->rollBack();
+                    }
+                    throw $e;
+                }
+                redirigir_imagenes('Los cuatro textos de vestimenta se guardaron.');
+            }
+
             // ---------- 3.2 Guardar el título destacado de una imagen (inserta o actualiza) ----------
             if ($accion === 'guardar_titulo_imagen') {
                 $ubicacion = (string) ($_POST['ubicacion'] ?? '');

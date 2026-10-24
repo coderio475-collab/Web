@@ -40,3 +40,16 @@ const UBICACIONES_IMAGENES = [
     'anexo_gomensoro_2' => ['grupo' => 'Anexo Tomás Gomensoro', 'etiqueta' => 'Anexo Tomás Gomensoro · imagen 2'],
     'anexo_gomensoro_3' => ['grupo' => 'Anexo Tomás Gomensoro', 'etiqueta' => 'Anexo Tomás Gomensoro · imagen 3'],
 ];
+
+// Campos editables de vestimenta: ubicación de imagen y tipo de texto.
+const TEXTOS_VESTIMENTA = [
+    'vestimenta_basico_remera' => ['vestimenta_basico', 'remera'],
+    'vestimenta_basico_jean' => ['vestimenta_basico', 'jean'],
+    'vestimenta_media_remera' => ['vestimenta_media', 'remera'],
+    'vestimenta_media_jean' => ['vestimenta_media', 'jean'],
+];
+
+const CAMPOS_TEXTO_VESTIMENTA = [
+    'remera' => ['Texto de la remera', 'Remera (camiseta) de color a definir, con el logo de la institución.', 'normativa.dress.top'],
+    'jean' => ['Texto del jean', 'Jean (vaquero) azul oscuro.', 'normativa.dress.bottom'],
+];

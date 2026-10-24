@@ -6,6 +6,8 @@
 $pageTitle = 'Normativa - Escuela Técnica N.º 1 Bella Unión';
 $pageDescription = 'Vestimenta y normativa de la Escuela Técnica N.º 1 de Bella Unión.';
 $assetBase = '../';
+require_once __DIR__ . '/../assets/php/contenido_publico.php';
+$textosVestimenta = obtener_titulos_imagenes();
 // ---------- Inicio ----------
 require_once __DIR__ . '/../requires/head.php';
 ?>
@@ -45,11 +47,11 @@ require_once __DIR__ . '/../requires/head.php';
               <ul class="dress-list">
                 <li>
                   <i class="bi bi-check2-circle" aria-hidden="true"></i>
-                  <span data-i18n="normativa.dress.top">Remera (camiseta) de color a definir, con el logo de la institución.</span>
+                  <span<?= atributo_i18n_texto_vestimenta('vestimenta_basico_remera', $textosVestimenta) ?>><?= htmlspecialchars(texto_vestimenta('vestimenta_basico_remera', $textosVestimenta), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?></span>
                 </li>
                 <li>
                   <i class="bi bi-check2-circle" aria-hidden="true"></i>
-                  <span data-i18n="normativa.dress.bottom">Jean (vaquero).</span>
+                  <span<?= atributo_i18n_texto_vestimenta('vestimenta_basico_jean', $textosVestimenta) ?>><?= htmlspecialchars(texto_vestimenta('vestimenta_basico_jean', $textosVestimenta), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?></span>
                 </li>
               </ul>
             </div>
@@ -66,11 +68,11 @@ require_once __DIR__ . '/../requires/head.php';
               <ul class="dress-list">
                 <li>
                   <i class="bi bi-check2-circle" aria-hidden="true"></i>
-                  <span data-i18n="normativa.dress.top">Remera (camiseta) de color a definir, con el logo de la institución.</span>
+                  <span<?= atributo_i18n_texto_vestimenta('vestimenta_media_remera', $textosVestimenta) ?>><?= htmlspecialchars(texto_vestimenta('vestimenta_media_remera', $textosVestimenta), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?></span>
                 </li>
                 <li>
                   <i class="bi bi-check2-circle" aria-hidden="true"></i>
-                  <span data-i18n="normativa.dress.bottom">Jean (vaquero).</span>
+                  <span<?= atributo_i18n_texto_vestimenta('vestimenta_media_jean', $textosVestimenta) ?>><?= htmlspecialchars(texto_vestimenta('vestimenta_media_jean', $textosVestimenta), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?></span>
                 </li>
               </ul>
             </div>

@@ -80,3 +80,22 @@ function atributo_i18n_titulo_destacado(string $ubicacion, array $titulos): stri
     }
     return '';
 }
+
+// ---------- Texto de vestimenta: personalizado desde el panel o predeterminado ----------
+function texto_vestimenta(string $ubicacion, array $textos): string
+{
+    $tipo = TEXTOS_VESTIMENTA[$ubicacion][1] ?? '';
+    return $textos[$ubicacion]
+        ?? CAMPOS_TEXTO_VESTIMENTA[$tipo][1]
+        ?? '';
+}
+
+function atributo_i18n_texto_vestimenta(string $ubicacion, array $textos): string
+{
+    $tipo = TEXTOS_VESTIMENTA[$ubicacion][1] ?? '';
+    $clave = CAMPOS_TEXTO_VESTIMENTA[$tipo][2] ?? '';
+    if ($clave !== '' && !isset($textos[$ubicacion])) {
+        return ' data-i18n="' . htmlspecialchars($clave, ENT_QUOTES, 'UTF-8') . '"';
+    }
+    return '';
+}

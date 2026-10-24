@@ -17,6 +17,12 @@ declare(strict_types=1);
                 <?php $gruposImagenes = array_values(array_unique(array_column(UBICACIONES_IMAGENES, 'grupo'))); ?>
                 <?php foreach ($gruposImagenes as $grupoImagenes): ?>
                     <h3 class="h5 mt-4 mb-3"><?= escapar($grupoImagenes) ?></h3>
+                    <?php if ($grupoImagenes === 'Vestimenta'): ?>
+                        <form id="guardar-textos-vestimenta" method="post">
+                            <input type="hidden" name="accion" value="guardar_textos_vestimenta">
+                            <input type="hidden" name="csrf_token" value="<?= escapar(csrf_token()) ?>">
+                        </form>
+                    <?php endif; ?>
                     <div class="row g-3">
                         <?php /* Una tarjeta por cada ubicación del grupo */ ?>
                         <?php foreach (UBICACIONES_IMAGENES as $ubicacion => $definicion): ?>
@@ -46,6 +52,25 @@ declare(strict_types=1);
                                                 required>
                                             <button class="btn btn-sm btn-outline-primary" type="submit">Guardar título</button>
                                         </form>
+                                    <?php endif; ?>
+                                    <?php foreach (TEXTOS_VESTIMENTA as $claveTexto => [$imagenTexto, $tipoTexto]): ?>
+                                        <?php if ($imagenTexto !== $ubicacion) continue; ?>
+                                        <?php $definicionTexto = CAMPOS_TEXTO_VESTIMENTA[$tipoTexto]; ?>
+                                        <div class="mb-3">
+                                            <label class="form-label small" for="texto_<?= escapar($claveTexto) ?>"><?= escapar($definicionTexto[0]) ?></label>
+                                            <input
+                                                class="form-control form-control-sm mb-2"
+                                                type="text"
+                                                id="texto_<?= escapar($claveTexto) ?>"
+                                                name="textos[<?= escapar($claveTexto) ?>]"
+                                                maxlength="180"
+                                                value="<?= escapar($titulosImagenes[$claveTexto] ?? $definicionTexto[1]) ?>"
+                                                form="guardar-textos-vestimenta"
+                                                required>
+                                        </div>
+                                    <?php endforeach; ?>
+                                    <?php if ($ubicacion === 'vestimenta_basico'): ?>
+                                    <button class="btn btn-primary mb-3" type="submit" form="guardar-textos-vestimenta">Guardar</button>
                                     <?php endif; ?>
                                     <?php /* Vista previa de la imagen actual (la sirve assets/php/imagen.php) */ ?>
                                     <?php if ($imagenActual !== null): ?>

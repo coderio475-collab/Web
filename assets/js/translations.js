@@ -285,7 +285,7 @@ window.SiteTranslations = {
     "inscripciones.typeLabel": "Tipo de curso",
     "inscripciones.typePlaceholder": "Seleccioná un tipo de curso",
     // ---------- Normativa y vestimenta (normativa.*) ----------
-    "normativa.dress.bottom": "Jean (vaquero).",
+    "normativa.dress.bottom": "Jean (vaquero) azul oscuro.",
     "normativa.dress.cb": "Uniforme estudiantil · Ciclo Básico",
     "normativa.dress.em": "Uniforme estudiantil · Educación Media",
     "normativa.dress.img": "Foto o dibujo — próximamente",
@@ -596,7 +596,7 @@ window.SiteTranslations = {
     "inscripciones.typeLabel": "Tipo de curso",
     "inscripciones.typePlaceholder": "Selecione um tipo de curso",
     // ---------- Normativa e vestimenta (normativa.*) ----------
-    "normativa.dress.bottom": "Calça jeans.",
+    "normativa.dress.bottom": "Calça jeans azul-escuro.",
     "normativa.dress.cb": "Uniforme estudantil · Ciclo Básico",
     "normativa.dress.em": "Uniforme estudantil · Educação Média",
     "normativa.dress.img": "Foto ou desenho — em breve",
