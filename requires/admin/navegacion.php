@@ -19,4 +19,6 @@ declare(strict_types=1);
             <a class="nav-link <?= $seccion === 'agenda' ? 'active' : '' ?>" href="admin.php?seccion=agenda">Agenda</a>
             <a class="nav-link <?= $seccion === 'modificaciones' ? 'active' : '' ?>" href="admin.php?seccion=modificaciones">Mod. exámenes y horarios</a>
             <a class="nav-link <?= $seccion === 'imagenes' ? 'active' : '' ?>" href="admin.php?seccion=imagenes">Imágenes de la página</a>
+            <?php /* Acceso al formulario para administrar destinos externos. */ ?>
+            <a class="nav-link <?= $seccion === 'enlaces' ? 'active' : '' ?>" href="admin.php?seccion=enlaces">Enlaces externos</a>
         </nav>

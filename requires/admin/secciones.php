@@ -15,6 +15,9 @@ declare(strict_types=1);
 // Elige que vista administrativa mostrar segun la seccion solicitada.
 ?><?php if ($seccion === 'imagenes'): ?>
 <?php require __DIR__ . '/imagenes.php'; ?>
+<?php elseif ($seccion === 'enlaces'): ?>
+<?php /* Formulario que edita los enlaces externos configurados en ENLACES_EXTERNOS. */ ?>
+<?php require __DIR__ . '/enlaces.php'; ?>
 <?php elseif ($seccion === 'agenda'): ?>
 <?php require __DIR__ . '/agenda.php'; ?>
 <?php elseif ($seccion === 'modificaciones'): ?>

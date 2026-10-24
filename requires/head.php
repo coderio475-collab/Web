@@ -6,6 +6,9 @@
 $pageTitle = $pageTitle ?? 'Inicio - Escuela Técnica N.º 1 Bella Unión';
 $pageDescription = $pageDescription ?? "Escuela Técnica N.º 1 'Mtro. Téc. Sergio G. Olaizola' — Bella Unión. Formación técnica para tu futuro.";
 $assetBase = $assetBase ?? '';
+require_once __DIR__ . '/../assets/php/contenido_publico.php';
+// ---------- Enlaces externos: carga los destinos guardados para que los use la página ----------
+$enlacesExternos = $titulosImagenes ?? $textosVestimenta ?? obtener_titulos_imagenes();
 ?>
 <!-- Inicio del documento HTML -->
 <!DOCTYPE html>

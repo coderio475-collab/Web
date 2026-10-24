@@ -160,6 +160,50 @@ if ($autenticado) {
                 redirigir_imagenes('Los cuatro textos de vestimenta se guardaron.');
             }
 
+            // Valida y guarda todos los destinos del catálogo como una sola operación.
+            // ---------- Enlaces externos: valida y guarda los destinos configurados en el CRUD ----------
+            if ($accion === 'guardar_enlaces_externos') {
+                $enlaces = $_POST['enlaces'] ?? null;
+                if (!is_array($enlaces)) {
+                    throw new RuntimeException('Completá todos los enlaces externos.');
+                }
+
+                $valores = [];
+                foreach (ENLACES_EXTERNOS as $clave => $_) {
+                    $url = $enlaces[$clave] ?? null;
+                    $partes = is_string($url) ? parse_url(trim($url)) : false;
+                    if (
+                        !is_string($url) || strlen($url) > 500
+                        || filter_var(trim($url), FILTER_VALIDATE_URL) === false
+                        || !in_array(strtolower($partes['scheme'] ?? ''), ['http', 'https'], true)
+                        || empty($partes['host'])
+                    ) {
+                        throw new RuntimeException('Ingresá direcciones completas con http:// o https://.');
+                    }
+                    $valores['enlace_' . $clave] = trim($url);
+                }
+
+                // Guarda el conjunto completo en la tabla de títulos existente y revierte si falla alguna URL.
+                $pdo->beginTransaction();
+                try {
+                    $stmt = $pdo->prepare(
+                        'INSERT INTO titulos_imagenes (ubicacion, titulo)
+                         VALUES (:ubicacion, :titulo)
+                         ON DUPLICATE KEY UPDATE titulo = VALUES(titulo)'
+                    );
+                    foreach ($valores as $ubicacion => $url) {
+                        $stmt->execute([':ubicacion' => $ubicacion, ':titulo' => $url]);
+                    }
+                    $pdo->commit();
+                } catch (Throwable $e) {
+                    if ($pdo->inTransaction()) {
+                        $pdo->rollBack();
+                    }
+                    throw $e;
+                }
+                redirigir_enlaces('Enlaces externos guardados.');
+            }
+
             // ---------- 3.2 Guardar el título destacado de una imagen (inserta o actualiza) ----------
             if ($accion === 'guardar_titulo_imagen') {
                 $ubicacion = (string) ($_POST['ubicacion'] ?? '');

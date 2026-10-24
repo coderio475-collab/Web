@@ -99,3 +99,11 @@ function atributo_i18n_texto_vestimenta(string $ubicacion, array $textos): strin
     }
     return '';
 }
+
+// ---------- Enlaces externos: usa el destino del CRUD o su URL predeterminada ----------
+function url_externo(string $clave, array $enlaces): string
+{
+    [$etiqueta, $predeterminada] = ENLACES_EXTERNOS[$clave];
+    $url = $enlaces['enlace_' . $clave] ?? $predeterminada;
+    return htmlspecialchars($url, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+}

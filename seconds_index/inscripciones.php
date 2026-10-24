@@ -9,7 +9,8 @@ $pageDescription = 'Formulario de inscripción para reservar cupos en la Escuela
 $assetBase = '../';
 // ---------- Inicio ----------
 require_once __DIR__ . '/../requires/head.php';
-?>    <body data-i18n-title="inscripciones.title" data-root="../">
+?>    
+    <body data-i18n-title="inscripciones.title" data-root="../" data-url-privacidad="<?= url_externo('privacidad', $enlacesExternos) ?>">
       <!-- ======================= Encabezado ======================= -->
     <?php  require_once __DIR__ . '/../requires/header.php'; ?>
 
@@ -312,7 +313,7 @@ require_once __DIR__ . '/../requires/head.php';
                     class="form-check-label"
                     for="acepta_terminos"
                     data-i18n="inscripciones.terms"
-                    data-i18n-html>He leído y aceptado los siguientes términos: <a class="terms-link" href="https://www.utu.edu.uy/wp-content/themes/balpadraUTU/src/documents/politica%20de%20privacidad.pdf" target="_blank" rel="noopener">política de privacidad</a></label>
+                    data-i18n-html>He leído y aceptado los siguientes términos: <a class="terms-link" href="<?= url_externo('privacidad', $enlacesExternos) ?>" target="_blank" rel="noopener">política de privacidad</a></label>
                 <div>
                   <span class="error-message" id="error-terminos" data-i18n="inscripciones.termsError">Tenés que aceptar los términos y condiciones para continuar.</span>
                 </div>
@@ -497,7 +498,7 @@ require_once __DIR__ . '/../requires/head.php';
                 <!-- Aceptación de términos y botón de envío -->
                 <div class="form-check mt-4">
                   <input class="form-check-input" type="checkbox" id="d_acepta_terminos" name="acepta_terminos" value="1" required>
-                  <label class="form-check-label" for="d_acepta_terminos" data-i18n="inscripciones.terms" data-i18n-html>He leído y aceptado los siguientes términos: <a class="terms-link" href="https://www.utu.edu.uy/wp-content/themes/balpadraUTU/src/documents/politica%20de%20privacidad.pdf" target="_blank" rel="noopener">política de privacidad</a></label>
+                  <label class="form-check-label" for="d_acepta_terminos" data-i18n="inscripciones.terms" data-i18n-html>He leído y aceptado los siguientes términos: <a class="terms-link" href="<?= url_externo('privacidad', $enlacesExternos) ?>" target="_blank" rel="noopener">política de privacidad</a></label>
                   <div><span class="error-message" id="error-d_terminos" data-i18n="inscripciones.termsError">Tenés que aceptar los términos y condiciones para continuar.</span></div>
                 </div>
                 <button type="submit" class="btn btn-gold w-100 mt-4"><i class="bi bi-send"></i> <span data-i18n="docentes.submitBtn">Enviar mis datos</span></button>

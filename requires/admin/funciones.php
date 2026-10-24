@@ -72,6 +72,16 @@ function redirigir_imagenes(string $mensaje): never
 }
 
 /**
+ * Muestra el resultado y vuelve a la sección CRUD de enlaces externos.
+ */
+function redirigir_enlaces(string $mensaje): void
+{
+    $_SESSION['admin_mensaje'] = $mensaje;
+    header('Location: admin.php?seccion=enlaces');
+    exit;
+}
+
+/**
  * Guarda un aviso y vuelve a la agenda despues de una operacion.
  */
 function redirigir_agenda(string $mensaje): void

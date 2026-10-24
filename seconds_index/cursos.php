@@ -35,8 +35,9 @@ require_once __DIR__ . '/../requires/head.php';
         <div class="note-box">
           <i class="bi bi-info-circle me-1"></i>
           <span data-i18n="cursos.areas.note">Consultá el listado completo y actualizado de cursos por orientación en el sitio oficial de UTU.</span>
+
           <a
-              href="https://www.utu.edu.uy/estudia/"
+              href="<?= url_externo('utu_estudia', $enlacesExternos) ?>"
               target="_blank"
               rel="noopener"
               class="terms-link ms-1"
@@ -47,7 +48,8 @@ require_once __DIR__ . '/../requires/head.php';
       <div class="note-box mb-5">
         <i class="bi bi-info-circle me-1" aria-hidden="true"></i>
         <span data-i18n="common.plans.note">Para consultar las materias y planes de estudio de los cursos de la UTU</span>
-        <a href="https://planeamientoeducativo.utu.edu.uy/tablaplanesprogrmasnueva" target="_blank" rel="noopener" class="terms-link ms-1" data-i18n="common.plans.link">Ver materias y planes de estudio</a>
+        
+        <a href="<?= url_externo('planes', $enlacesExternos) ?>" target="_blank" rel="noopener" class="terms-link ms-1" data-i18n="common.plans.link">Ver materias y planes de estudio</a>
       </div>
 
       <!-- ======================= FILTROS POR SECTOR ======================= -->

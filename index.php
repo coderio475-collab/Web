@@ -9,6 +9,7 @@ $footerScriptBefore = 'assets/js/imagenes.js';
 // ---------- Datos dinamicos de la base: eventos de la agenda y títulos de imágenes destacadas (contenido_publico.php) ----------
 require_once __DIR__ . '/assets/php/contenido_publico.php';
 $agendaEventos = obtener_eventos_agenda();
+// $titulosImagenes también contiene los destinos externos guardados en el CRUD.
 $titulosImagenes = obtener_titulos_imagenes();
 
 require_once __DIR__ . "/requires/head.php";
@@ -195,7 +196,8 @@ require_once __DIR__ . "/requires/head.php";
               <span class="promo-kicker" data-i18n="home.promo.becas.kicker">¡Apoyo estudiantil!</span>
               <h2 class="promo-title" data-i18n="home.promo.becas.title" data-i18n-html>Conocé las <span class="hl-green">becas</span> disponibles</h2>
               <p class="promo-text" data-i18n="home.promo.becas.text">Informate sobre las becas y apoyos económicos para estudiantes.</p>
-              <a href="https://becas.edu.uy/" class="btn btn-gold"><i class="bi bi-award"></i> <span data-i18n="home.promo.becas.btn">Ver becas</span></a>
+              
+              <a href="<?= url_externo('becas', $enlacesExternos) ?>" class="btn btn-gold"><i class="bi bi-award"></i> <span data-i18n="home.promo.becas.btn">Ver becas</span></a>
             </div>
           </div>
         </div>
@@ -336,19 +338,19 @@ require_once __DIR__ . "/requires/head.php";
             <a href="seconds_index/cursos.php" class="interest-tile"><i class="bi bi-mortarboard" aria-hidden="true"></i><span data-i18n="home.interes.cursos">Cursos y Carreras</span></a>
             <a href="seconds_index/inscripciones.php" class="interest-tile"><i class="bi bi-pencil-square" aria-hidden="true"></i><span data-i18n="home.interes.inscrip">Inscripciones</span></a>
             <a href="seconds_index/horarios.php" class="interest-tile"><i class="bi bi-clock" aria-hidden="true"></i><span data-i18n="home.interes.horarios">Horarios</span></a>
-            <a href="https://becas.edu.uy/"| class="interest-tile"><i class="bi bi-award" aria-hidden="true"></i><span data-i18n="home.interes.becas">Becas</span></a>
+            <a href="<?= url_externo('becas', $enlacesExternos) ?>" class="interest-tile"><i class="bi bi-award" aria-hidden="true"></i><span data-i18n="home.interes.becas">Becas</span></a>
             <a href="seconds_index/horarios.php#examenes" class="interest-tile"><i class="bi bi-file-earmark-text" aria-hidden="true"></i><span data-i18n="home.interes.examenes">Exámenes</span></a>
             <a href="seconds_index/anexos.php" class="interest-tile"><i class="bi bi-geo-alt" aria-hidden="true"></i><span data-i18n="home.interes.anexos">Anexos</span></a>
             <a href="seconds_index/noticias.php" class="interest-tile"><i class="bi bi-newspaper" aria-hidden="true"></i><span data-i18n="home.interes.noticias">Noticias</span></a>
             <a href="seconds_index/normativa.php" class="interest-tile"><i class="bi bi-journal-text" aria-hidden="true"></i><span data-i18n="home.interes.normativa">Normativa</span></a>
-            <a href="https://www.utu.edu.uy/estudia/" class="interest-tile" target="_blank" rel="noopener"><i class="bi bi-search" aria-hidden="true"></i><span data-i18n="home.interes.estudia">Estudiá en UTU</span></a>
+            <a href="<?= url_externo('utu_estudia', $enlacesExternos) ?>" class="interest-tile" target="_blank" rel="noopener"><i class="bi bi-search" aria-hidden="true"></i><span data-i18n="home.interes.estudia">Estudiá en UTU</span></a>
             <a
-                href="https://www.utu.edu.uy/wp-content/themes/balpadraUTU/src/documents/politica%20de%20privacidad.pdf"
+                href="<?= url_externo('privacidad', $enlacesExternos) ?>"
                 class="interest-tile"
                 target="_blank"
                 rel="noopener"><i class="bi bi-shield-check" aria-hidden="true"></i><span data-i18n="home.interes.privacidad">Política de privacidad</span></a>
             <a
-                href="https://www.utu.edu.uy/wp-content/themes/balpadraUTU/src/documents/encuentros/23oct25-litoralnorte/Escuela%20T%C3%A9cnica%20%C2%ABMtro%20Sergio%20Gonz%C3%A1lez%20Olaizola%C2%BB%20%E2%80%93%20Bella%20Uni%C3%B3n.pdf?_t=1761659170"
+                href="<?= url_externo('presentacion', $enlacesExternos) ?>"
                 class="interest-tile"
                 target="_blank"
                 rel="noopener"><i class="bi bi-file-earmark-slides" aria-hidden="true"></i><span data-i18n="home.interes.presentacion">Presentación</span></a>

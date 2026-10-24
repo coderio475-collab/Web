@@ -44,6 +44,9 @@ var SVG_FLAG_UY = '<svg viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg"
           attrs.split(',').forEach(function (a) { el.setAttribute(a.trim(), text); });
         } else if (el.hasAttribute('data-i18n-html')) {
           el.innerHTML = text;
+          //aca se vuelve a aplicar el destino guardado en el CRUD.
+          var privacyLink = el.querySelector('[data-enlace-externo="privacidad"]');
+          if (privacyLink) privacyLink.href = document.body.getAttribute('data-url-privacidad') || '#';
         } else {
           el.textContent = text;
         }

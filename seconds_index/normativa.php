@@ -86,7 +86,8 @@ require_once __DIR__ . '/../requires/head.php';
         <h2 class="section-title" data-i18n="normativa.list.title">Normativa</h2>
         <ul class="norm-list">
           <li>
-            <a href="https://www.utu.edu.uy/normativas/" target="_blank" rel="noopener"><i class="bi bi-file-earmark-text norm-icon" aria-hidden="true"></i><span data-i18n="normativa.link">Las normativas de la institución</span><i class="bi bi-arrow-right norm-arrow" aria-hidden="true"></i></a>
+            
+            <a href="<?= url_externo('normativas', $enlacesExternos) ?>" target="_blank" rel="noopener"><i class="bi bi-file-earmark-text norm-icon" aria-hidden="true"></i><span data-i18n="normativa.link">Las normativas de la institución</span><i class="bi bi-arrow-right norm-arrow" aria-hidden="true"></i></a>
           </li>
         </ul>
       </section>

@@ -25,7 +25,8 @@ if (!in_array($tabla, TABLAS_ADMIN, true)) {
     $tabla = 'cupo_estudiantes';
 }
 $seccion = (string) ($_GET['seccion'] ?? '');
-if (!in_array($seccion, ['modificaciones', 'imagenes', 'agenda'], true)) {
+// ---------- Enlaces externos: permite seleccionar su sección del CRUD ----------
+if (!in_array($seccion, ['modificaciones', 'imagenes', 'agenda', 'enlaces'], true)) {
     $seccion = '';
 }
 

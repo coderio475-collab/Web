@@ -53,3 +53,13 @@ const CAMPOS_TEXTO_VESTIMENTA = [
     'remera' => ['Texto de la remera', 'Remera (camiseta) de color a definir, con el logo de la institución.', 'normativa.dress.top'],
     'jean' => ['Texto del jean', 'Jean (vaquero) azul oscuro.', 'normativa.dress.bottom'],
 ];
+
+// ---------- Enlaces externos: catálogo editable desde el CRUD (clave, etiqueta y URL predeterminada) ----------
+const ENLACES_EXTERNOS = [
+    'becas' => ['Becas', 'https://becas.edu.uy/'],
+    'utu_estudia' => ['Oferta educativa UTU', 'https://www.utu.edu.uy/estudia/'],
+    'planes' => ['Materias y planes de estudio', 'https://planeamientoeducativo.utu.edu.uy/tablaplanesprogrmasnueva'],
+    'normativas' => ['Normativas UTU', 'https://www.utu.edu.uy/normativas/'],
+    'privacidad' => ['Política de privacidad', 'https://www.utu.edu.uy/wp-content/themes/balpadraUTU/src/documents/politica%20de%20privacidad.pdf'],
+    'presentacion' => ['Presentación de la escuela', 'https://www.utu.edu.uy/wp-content/themes/balpadraUTU/src/documents/encuentros/23oct25-litoralnorte/Escuela%20T%C3%A9cnica%20%C2%ABMtro%20Sergio%20Gonz%C3%A1lez%20Olaizola%C2%BB%20%E2%80%93%20Bella%20Uni%C3%B3n.pdf?_t=1761659170'],
+];

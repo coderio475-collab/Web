@@ -64,13 +64,14 @@ $footerScriptAfter2 = $footerScriptAfter2 ?? '';
         <div class="footer-bottom">
           <p data-i18n="common.footer.rights">© 2026 Escuela Técnica N.º 1 "Mtro. Téc. Sergio G. Olaizola" — Bella Unión. Todos los derechos reservados.</p>
           <div class="footer-links">
+            <?php /* Enlaces externos del pie con destinos administrables desde el CRUD. */ ?>
             <a
-                href="https://www.utu.edu.uy/wp-content/themes/balpadraUTU/src/documents/politica%20de%20privacidad.pdf"
+                href="<?= url_externo('privacidad', $enlacesExternos) ?>"
                 target="_blank"
                 rel="noopener"
                 data-i18n="common.footer.privacy">Política de privacidad</a>
             <a
-                href="https://www.utu.edu.uy/wp-content/themes/balpadraUTU/src/documents/encuentros/23oct25-litoralnorte/Escuela%20T%C3%A9cnica%20%C2%ABMtro%20Sergio%20Gonz%C3%A1lez%20Olaizola%C2%BB%20%E2%80%93%20Bella%20Uni%C3%B3n.pdf?_t=1761659170"
+                href="<?= url_externo('presentacion', $enlacesExternos) ?>"
                 target="_blank"
                 rel="noopener"
                 data-i18n="common.footer.presentation">Presentación</a>
@@ -89,7 +90,7 @@ $footerScriptAfter2 = $footerScriptAfter2 ?? '';
 <?php endif; ?>
     <?php /* Traducciones ES/PT (el ?v= usa la fecha del archivo para evitar caché vieja), motor i18n, buscador y funciones generales */ ?>
     <script src="<?= htmlspecialchars($assetBase, ENT_QUOTES, 'UTF-8') ?>assets/js/translations.js?v=<?= (int) filemtime(__DIR__ . '/../assets/js/translations.js') ?>"></script>
-    <script src="<?= htmlspecialchars($assetBase, ENT_QUOTES, 'UTF-8') ?>assets/js/i18n.js"></script>
+    <script src="<?= htmlspecialchars($assetBase, ENT_QUOTES, 'UTF-8') ?>assets/js/i18n.js?v=<?= (int) filemtime(__DIR__ . '/../assets/js/i18n.js') ?>"></script>
     <script src="<?= htmlspecialchars($assetBase, ENT_QUOTES, 'UTF-8') ?>assets/js/buscador.js"></script>
     <script src="<?= htmlspecialchars($assetBase, ENT_QUOTES, 'UTF-8') ?>assets/js/main.js"></script>
 <?php /* Scripts opcionales propios de la página */ ?>

@@ -268,7 +268,7 @@ window.SiteTranslations = {
     "inscripciones.phoneLabel": "Teléfono de contacto",
     "inscripciones.phonePlaceholder": "Ej. 099 123 456",
     "inscripciones.submitBtn": "Reservar mi cupo",
-    "inscripciones.terms": "He leído y aceptado los siguientes términos: <a class=\"terms-link\" href=\"https://www.utu.edu.uy/wp-content/themes/balpadraUTU/src/documents/politica%20de%20privacidad.pdf\" target=\"_blank\" rel=\"noopener\">política de privacidad</a>",
+    "inscripciones.terms": "He leído y aceptado los siguientes términos: <a class=\"terms-link\" href=\"#\" data-enlace-externo=\"privacidad\" target=\"_blank\" rel=\"noopener\">política de privacidad</a>",
     "inscripciones.termsError": "Tenés que aceptar los términos y condiciones para continuar.",
     "inscripciones.title": "Inscripciones - Escuela Técnica N.º 1 Bella Unión",
     "inscripciones.tutorEmailError": "Introducí un email válido para el tutor.",
@@ -579,7 +579,8 @@ window.SiteTranslations = {
     "inscripciones.phoneLabel": "Telefone de contato",
     "inscripciones.phonePlaceholder": "Ex. 099 123 456",
     "inscripciones.submitBtn": "Reservar minha vaga",
-    "inscripciones.terms": "Li e aceito os seguintes termos: <a class=\"terms-link\" href=\"https://www.utu.edu.uy/wp-content/themes/balpadraUTU/src/documents/politica%20de%20privacidad.pdf\" target=\"_blank\" rel=\"noopener\">política de privacidade</a>",
+    
+    "inscripciones.terms": "Li e aceito os seguintes termos: <a class=\"terms-link\" href=\"#\" data-enlace-externo=\"privacidad\" target=\"_blank\" rel=\"noopener\">política de privacidade</a>",
     "inscripciones.termsError": "Você precisa aceitar os termos e condições para continuar.",
     "inscripciones.title": "Inscrições - Escola Técnica N.º 1 Bella Unión",
     "inscripciones.tutorEmailError": "Digite um e-mail válido para o responsável.",
