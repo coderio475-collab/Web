@@ -1,38 +1,44 @@
+/**
+ * ==========================================================================
+ * main.js — INICIALIZACIÓN GENERAL 
+ * ==========================================================================
+ */
 document.addEventListener('DOMContentLoaded', function () {
-  var formularios = document.querySelectorAll('form[data-demo-form]');
-  var parametros = new URLSearchParams(window.location.search);
-  var resultado = parametros.get('registro');
-  var tipo = parametros.get('tipo') || 'estudiante';
 
-  formularios.forEach(function (formulario) {
-    formulario.addEventListener('input', function (event) {
-      event.target.setCustomValidity('');
-    });
+  // 1) inicializacion de tema e idioma
+  if (window.SiteTheme) window.SiteTheme.init();
+  if (window.SiteI18n) window.SiteI18n.init();
 
-    formulario.addEventListener('submit', function (event) {
-      var campos = formulario.querySelectorAll('input:not([type="hidden"]), select, textarea');
-
-      for (var indice = 0; indice < campos.length; indice += 1) {
-        var campo = campos[indice];
-
-        if (campo.value.trim() === '') {
-          event.preventDefault();
-          campo.setCustomValidity('Este campo no puede estar vacío.');
-          campo.reportValidity();
-          return;
-        }
-      }
-    });
+  // 2) Enlace activo del menú 
+  var current = location.pathname.split('/').pop() || 'index.php';
+  document.querySelectorAll('.navbar-custom .nav-link, .navbar-custom .dropdown-item').forEach(function (link) {
+    if (link.getAttribute('href').split('#')[0].split('/').pop() === current) {
+      link.classList.add('active');
+      var parent = link.closest('.dropdown');
+      var toggle = parent ? parent.querySelector('.dropdown-toggle') : null;
+      if (toggle) toggle.classList.add('active');
+    }
   });
 
-  if (resultado === 'ok') {
-    var successBox = document.querySelector('#' + tipo + '-success');
-    if (successBox) {
-      successBox.classList.add('show');
-    }
+  // 3) Menú móvil: se cierra al tocar una opción 
+  var navCollapse = document.getElementById('mainNavbar');
+  if (navCollapse && window.bootstrap) {
+    navCollapse.querySelectorAll('.nav-link:not(.dropdown-toggle), .dropdown-item').forEach(function (link) {
+      link.addEventListener('click', function () {
+        if (navCollapse.classList.contains('show')) {
+          bootstrap.Collapse.getOrCreateInstance(navCollapse).hide();
+        }
+      });
+    });
   }
 
-  if (resultado === 'error') {
-    window.alert('No se pudo guardar el registro. Verificá los datos e intentá nuevamente.');
-  }
+  // 4) Revelar la página
+  requestAnimationFrame(function () {
+    document.documentElement.classList.add('ready');
+  });
 });
+
+//delay: si algo tarda, se muestra igual a los 700 ms
+setTimeout(function () {
+  document.documentElement.classList.add('ready');
+}, 700);
