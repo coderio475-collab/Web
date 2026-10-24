@@ -402,6 +402,15 @@ html.dark-mode .promo-title .hl-green { color: #9cc08f; }
 .stat-value { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 600; line-height: 1.1; color: var(--color-gold-light); }
 .stat-name { font-size: 0.85rem; color: #d9cfbb; }
 
+/* ==========================================================================
+   7. HORARIOS Y EXÁMENES
+   ========================================================================== */
+.pdf-panel { display: flex; align-items: center; gap: 1rem; padding: 1.1rem 1.5rem; transition: var(--speed) var(--ease); }
+.pdf-panel:hover { border-color: var(--color-gold); box-shadow: var(--shadow-lift); }
+.pdf-panel h3 { margin: 0; font-size: 1.05rem; }
+.pdf-panel-go { margin-left: auto; font-size: 1.1rem; color: var(--accent); transition: var(--speed) var(--ease); }
+.pdf-panel:hover .pdf-panel-go { transform: translate(2px, -2px); }
+
 
 /* ==========================================================================
    10. NORMATIVA
