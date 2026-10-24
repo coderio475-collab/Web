@@ -422,6 +422,17 @@ html.dark-mode .promo-title .hl-green { color: #9cc08f; }
 .norm-arrow { margin-left: auto; color: var(--color-text-muted); transition: var(--speed) var(--ease); }
 .norm-list a:hover .norm-arrow { transform: translateX(4px); color: var(--color-gold); }
 
+/* ==========================================================================
+   11. NOTICIAS
+   ========================================================================== */
+.news-card { display: grid; grid-template-columns: 280px 1fr; margin-bottom: 1.75rem; overflow: hidden; }
+.news-card .news-media { min-height: 200px; border-radius: 0; }
+.news-card-body { display: flex; flex-direction: column; justify-content: space-between; padding: 1.5rem; }
+@media (max-width: 768px) { .news-card { grid-template-columns: 1fr; } .news-card .news-media { min-height: 160px; } }
+
+.gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }   
+.gallery-grid .img-placeholder { aspect-ratio: 4 / 3; height: auto; min-height: 0; min-width: 0; }
+@media (max-width: 575px) { .gallery-grid { gap: 0.5rem; } .gallery-grid .img-placeholder span { display: none; } }
 
 
 

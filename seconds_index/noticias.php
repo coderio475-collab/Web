@@ -17,7 +17,7 @@ require_once __DIR__ . '/../requires/head.php';
     <!-- ======================= Encabezado ======================= -->
     <?php  require_once __DIR__ . '/../requires/header.php'; ?>
 
-      <!-- ======================= HERO (título de la página) ======================= -->
+     <!-- ======================= HERO (título de la página) ======================= -->
     <section class="hero hero-simple">
       <div class="container hero-inner text-center">
         <span class="hero-eyebrow" data-i18n="noticias.hero.eyebrow">Comunidad educativa</span>
