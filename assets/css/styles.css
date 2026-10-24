@@ -411,6 +411,32 @@ html.dark-mode .promo-title .hl-green { color: #9cc08f; }
 .pdf-panel-go { margin-left: auto; font-size: 1.1rem; color: var(--accent); transition: var(--speed) var(--ease); }
 .pdf-panel:hover .pdf-panel-go { transform: translate(2px, -2px); }
 
+/* ==========================================================================
+   8. CURSOS Y CARRERAS
+   ========================================================================== */
+.sector-filter { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.sector-chip { display: inline-flex; align-items: center; gap: 6px; padding: 0.4rem 0.9rem; border-radius: 999px; color: var(--color-text); font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: var(--speed) var(--ease); }
+.sector-chip i { color: var(--accent); }
+.sector-chip:hover { border-color: var(--color-gold); }
+.sector-chip.active { background: var(--color-primary); border-color: var(--color-primary); color: var(--color-gold-light); }
+.sector-chip.active i { color: var(--color-gold-light); }
+
+.level-block { margin-bottom: 2.75rem; }
+.level-head { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+.level-head h2 { margin: 0; font-size: 1.4rem; color: var(--heading); }
+.level-head p { margin: 0; font-size: 0.9rem; color: var(--color-text-muted); }
+
+.course-full-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 270px), 1fr)); gap: 1rem; }
+.course-full { display: flex; align-items: center; gap: 0.85rem; padding: 0.9rem 1.1rem; transition: var(--speed) var(--ease); }
+.course-full:hover { border-color: var(--color-gold); transform: translateY(-2px); }
+.course-full h3 { margin: 0; font-size: 1rem; line-height: 1.25; color: var(--heading); }
+.course-icon { width: 42px; height: 42px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: linear-gradient(160deg, var(--color-gold-light), var(--color-gold)); border-radius: 10px; color: var(--color-primary); font-size: 1.15rem; }
+.sector-tag { font-size: 0.74rem; color: var(--accent); }
+
+.page-actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; }
+.page-actions .note-box { flex: 1 1 320px; }
+textarea.form-control { resize: vertical; min-height: 6rem; }
+
 
 /* ==========================================================================
    10. NORMATIVA

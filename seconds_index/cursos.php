@@ -14,80 +14,320 @@ require_once __DIR__ . '/../requires/head.php';
     <!-- ======================= Encabezado ======================= -->
     <?php  require_once __DIR__ . '/../requires/header.php'; ?>
 
-    <!-- Contenido principal -->
-    <main class="cursos-page">
-        <header class="hero">
-            <div class="container">
-                <span class="hero-eyebrow">Propuesta académica</span>
-                <h2>Oferta educativa</h2>
-                <p class="lead-text">Encontrá el trayecto formativo que acompaña tus intereses, tu edad y tus próximos proyectos.</p>
-            </div>
-        </header>
-          
-        <!-- Sección de cursos y carreras -->
-        <section class="section-pad container" aria-labelledby="education-title">
-            <div class="feature-square">
-                <div class="feature-square-header">
-                    <div>
-                        <span class="section-kicker">Formación para cada etapa</span>
-                        <h2 id="education-title" class="section-title">Cursos y carreras</h2>
-                    </div>
-                    <i class="bi bi-mortarboard fs-1 text-gold" aria-hidden="true"></i>
-                </div>
-
-                <div class="cursos-chip-grid">
-                    <div class="cursos-chip"><div class="chip-icon"><i class="bi bi-journal-bookmark"></i></div><div class="chip-label"><strong>EBI</strong><span>Educación Básica Integrada</span></div></div>
-                    <div class="cursos-chip"><div class="chip-icon"><i class="bi bi-briefcase"></i></div><div class="chip-label"><strong>FPB</strong><span>Formación Profesional Básica</span></div></div>
-                    <div class="cursos-chip"><div class="chip-icon"><i class="bi bi-laptop"></i></div><div class="chip-label"><strong>BT</strong><span>Bachillerato Tecnológico</span></div></div>
-                    <div class="cursos-chip"><div class="chip-icon"><i class="bi bi-tools"></i></div><div class="chip-label"><strong>BTP</strong><span>Bachillerato Técnico Profesional</span></div></div>
-                    <div class="cursos-chip"><div class="chip-icon"><i class="bi bi-gear"></i></div><div class="chip-label"><strong>CTT</strong><span>Cursos Técnicos Terciarios</span></div></div>
-                    <div class="cursos-chip"><div class="chip-icon"><i class="bi bi-people"></i></div><div class="chip-label"><strong>Capacitaciones</strong><span>Actualización y oficios</span></div></div>
-                </div>
-
-                <div class="card-tech cursos-contact">
-                    <div class="card-icon mb-0"><i class="bi bi-chat-dots"></i></div>
-                    <div>
-                        <h3 class="h5">¿Necesitás orientación?</h3>
-                        <p class="mb-0 text-muted">Comunicate con la institución para conocer requisitos, horarios y disponibilidad.</p>
-                    </div>
-                    <a href="contacto.html" class="btn btn-gold">Contactar</a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- FOOTER -->
-    <footer class="main-footer">
-        <div class="container">
-            <div class="footer-brand">
-                <img src="../assets/img/logo-utu-transparent.png" alt="Escudo Escuela Técnica N.º 1" class="brand-crest-img">
-                <div><h2>Escuela Técnica N.º 1</h2><span class="brand-sub">"Mtro. Téc. Sergio G. Olaizola" · Bella Unión</span></div>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <h3>Contacto Sede</h3>
-                    <p><i class="bi bi-geo-alt me-1"></i> Pedro Acosta y Avenida Artigas, Bella Unión</p>
-                    <p><i class="bi bi-telephone me-1"></i> 4779 2025</p>
-                    <p><i class="bi bi-envelope me-1"></i> info@utu.edu.uy</p>
-                </div>
-                <div class="col-md-4">
-                    <h3>Atención al Estudiante</h3>
-                    <p><i class="bi bi-clock me-1"></i> Lunes a Viernes de 08:00 a 20:00 hs</p>
-                    <p><i class="bi bi-envelope me-1"></i> secretaria@utu.edu.uy</p>
-                </div>
-                <div class="col-md-4">
-                    <h3>Seguinos en nuestras redes</h3>
-                    <div class="footer-social">
-                        <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-                        <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom"><p class="mb-0">&copy; 2026 Escuela Técnica N.º 1 "Mtro. Téc. Sergio G. Olaizola" — Bella Unión. Todos los derechos reservados.</p></div>
+    <!-- ======================= HERO (título de la página) ======================= -->
+    <section class="hero hero-simple">
+      <div class="container hero-inner text-center">
+        <span class="hero-eyebrow" data-i18n="cursos.hero.eyebrow">Oferta educativa</span>
+        <div class="hero-title-row">
+          <span class="hero-icon" aria-hidden="true"><i class="bi bi-mortarboard"></i></span>
+          <h1 data-i18n="cursos.hero.title">Cursos y Carreras</h1>
         </div>
-      <?php /* Pie de página y scripts (footer_scripts.php) */ ?>
-    <?php
+        <p class="lead-text mx-auto" data-i18n="cursos.hero.lead">Oferta educativa de la Escuela Técnica N.º 1 y sus anexos, ordenada por tipo de curso y sector de estudio.</p>
+      </div>
+    </section>
+
+    <!-- ======================= CONTENIDO PRINCIPAL ======================= -->
+    <main class="container section-pad">
+
+      <!-- ======================= INFORMACIÓN Y ACCESO A INSCRIPCIONES ======================= -->
+      
+      <div class="page-actions mb-3">
+        <div class="note-box">
+          <i class="bi bi-info-circle me-1"></i>
+          <span data-i18n="cursos.areas.note">Consultá el listado completo y actualizado de cursos por orientación en el sitio oficial de UTU.</span>
+          <a
+              href="https://www.utu.edu.uy/estudia/"
+              target="_blank"
+              rel="noopener"
+              class="terms-link ms-1"
+              data-i18n="cursos.areas.link">Ver Estudiá en UTU</a>
+        </div>
+        <a href="inscripciones.php" class="btn btn-gold"><i class="bi bi-pencil-square"></i> <span data-i18n="cursos.cta">Quiero inscribirme</span></a>
+      </div>
+      <div class="note-box mb-5">
+        <i class="bi bi-info-circle me-1" aria-hidden="true"></i>
+        <span data-i18n="common.plans.note">Para consultar las materias y planes de estudio de los cursos de la UTU</span>
+        <a href="https://planeamientoeducativo.utu.edu.uy/tablaplanesprogrmasnueva" target="_blank" rel="noopener" class="terms-link ms-1" data-i18n="common.plans.link">Ver materias y planes de estudio</a>
+      </div>
+
+      <!-- ======================= FILTROS POR SECTOR ======================= -->
+     
+      <section class="mb-5" aria-label="Sectores de estudio">
+        <span class="section-kicker" data-i18n="cursos.areas.kicker">Orientaciones</span>
+        <h2 class="section-title" data-i18n="cursos.areas.title">Sectores de estudio</h2>
+        <!-- Botones de filtro por sector  -->
+        <div class="sector-filter">
+          <button type="button" class="sector-chip active" data-sector="todos"><i class="bi bi-grid" aria-hidden="true"></i> <span data-i18n="cursos.filter.all">Todos</span></button>
+          <button type="button" class="sector-chip" data-sector="agro"><i class="bi bi-flower2" aria-hidden="true"></i> <span data-i18n="cursos.s.agro">Agropecuario</span></button>
+          <button type="button" class="sector-chip" data-sector="comer"><i class="bi bi-briefcase" aria-hidden="true"></i> <span data-i18n="cursos.s.comer">Comercio Y Administración</span></button>
+          <button type="button" class="sector-chip" data-sector="constr"><i class="bi bi-bricks" aria-hidden="true"></i> <span data-i18n="cursos.s.constr">Construcción Y Arquitectura</span></button>
+          <button type="button" class="sector-chip" data-sector="deporte"><i class="bi bi-trophy" aria-hidden="true"></i> <span data-i18n="cursos.s.deporte">Deporte Y Afines</span></button>
+          <button type="button" class="sector-chip" data-sector="diseno"><i class="bi bi-palette" aria-hidden="true"></i> <span data-i18n="cursos.s.diseno">Diseño Gráfico</span></button>
+          <button type="button" class="sector-chip" data-sector="electr"><i class="bi bi-lightning-charge" aria-hidden="true"></i> <span data-i18n="cursos.s.electr">Electricidad Y Electrónica</span></button>
+          <button type="button" class="sector-chip" data-sector="gastro"><i class="bi bi-cup-hot" aria-hidden="true"></i> <span data-i18n="cursos.s.gastro">Gastronomía</span></button>
+          <button type="button" class="sector-chip" data-sector="inform"><i class="bi bi-pc-display" aria-hidden="true"></i> <span data-i18n="cursos.s.inform">Informática</span></button>
+          <button type="button" class="sector-chip" data-sector="madera"><i class="bi bi-hammer" aria-hidden="true"></i> <span data-i18n="cursos.s.madera">Madera Y Muebles</span></button>
+          <button type="button" class="sector-chip" data-sector="metal"><i class="bi bi-gear-wide-connected" aria-hidden="true"></i> <span data-i18n="cursos.s.metal">Metal-Mecánica</span></button>
+          <button type="button" class="sector-chip" data-sector="emb"><i class="bi bi-journal-bookmark" aria-hidden="true"></i> <span data-i18n="cursos.s.emb">Programa Educación Media Básica</span></button>
+          <button type="button" class="sector-chip" data-sector="servic"><i class="bi bi-heart-pulse" aria-hidden="true"></i> <span data-i18n="cursos.s.servic">Servicios Personales</span></button>
+          <button type="button" class="sector-chip" data-sector="textil"><i class="bi bi-scissors" aria-hidden="true"></i> <span data-i18n="cursos.s.textil">Textil Y Confección De Vestimenta</span></button>
+        </div>
+      </section>
+
+      <!-- ======================= CICLO BÁSICO ======================= -->
+      <section class="level-block" id="cb">
+        <div class="level-head">
+          <div class="card-icon"><i class="bi bi-journal-bookmark" aria-hidden="true"></i></div>
+          <div>
+            <h2 data-i18n="cursos.n.cb">Ciclo Básico</h2>
+            <p data-i18n="cursos.nd.cb">Ciclo básico de 7º a 9º año (Educación Básica Integrada): formación general y talleres introductorios para iniciar el trayecto en la educación técnica.</p>
+          </div>
+        </div>
+        <div class="course-full-grid">
+          <!-- Tarjetas de cursos -->
+          <article class="course-full" data-sector="emb">
+            <span class="course-icon"><i class="bi bi-7-square" aria-hidden="true"></i></span>
+            <div>
+              <h3 data-i18n="cursos.c.ebi7">EBI 7º</h3>
+              <span class="sector-tag"><i class="bi bi-journal-bookmark" aria-hidden="true"></i> <span data-i18n="cursos.s.emb">Programa Educación Media Básica</span></span>
+            </div>
+          </article>
+          <article class="course-full" data-sector="emb">
+            <span class="course-icon"><i class="bi bi-8-square" aria-hidden="true"></i></span>
+            <div>
+              <h3 data-i18n="cursos.c.ebi8">EBI 8º</h3>
+              <span class="sector-tag"><i class="bi bi-journal-bookmark" aria-hidden="true"></i> <span data-i18n="cursos.s.emb">Programa Educación Media Básica</span></span>
+            </div>
+          </article>
+          <article class="course-full" data-sector="emb">
+            <span class="course-icon"><i class="bi bi-9-square" aria-hidden="true"></i></span>
+            <div>
+              <h3 data-i18n="cursos.c.ebi9">EBI 9º</h3>
+              <span class="sector-tag"><i class="bi bi-journal-bookmark" aria-hidden="true"></i> <span data-i18n="cursos.s.emb">Programa Educación Media Básica</span></span>
+            </div>
+          </article>
+        </div>
+      </section>
+       
+      <!-- ======================= BACHILLERATO TECNOLÓGICO ======================= -->
+      <section class="level-block" id="bt">
+        <div class="level-head">
+          <div class="card-icon"><i class="bi bi-laptop" aria-hidden="true"></i></div>
+          <div>
+            <h2 data-i18n="cursos.n.bt">Bachillerato Tecnológico (BT)</h2>
+            <p data-i18n="cursos.nd.bt">Segundo ciclo con orientación tecnológica, que habilita la continuidad educativa terciaria y la inserción laboral.</p>
+          </div>
+        </div>
+        <div class="course-full-grid">
+          <article class="course-full" data-sector="agro">
+            <span class="course-icon"><i class="bi bi-flower2" aria-hidden="true"></i></span>
+            <div>
+              <h3 data-i18n="cursos.c.agrario">Agrario</h3>
+              <span class="sector-tag"><i class="bi bi-flower2" aria-hidden="true"></i> <span data-i18n="cursos.s.agro">Agropecuario</span></span>
+            </div>
+          </article>
+          <article class="course-full" data-sector="deporte">
+            <span class="course-icon"><i class="bi bi-trophy" aria-hidden="true"></i></span>
+            <div>
+              <h3 data-i18n="cursos.c.deporte">Deporte, Ed. Física Y Recreación</h3>
+              <span class="sector-tag"><i class="bi bi-trophy" aria-hidden="true"></i> <span data-i18n="cursos.s.deporte">Deporte Y Afines</span></span>
+            </div>
+          </article>
+          <article class="course-full" data-sector="comer">
+            <span class="course-icon"><i class="bi bi-briefcase" aria-hidden="true"></i></span>
+            <div>
+              <h3 data-i18n="cursos.c.gestion">Gestión Y Administración</h3>
+              <span class="sector-tag"><i class="bi bi-briefcase" aria-hidden="true"></i> <span data-i18n="cursos.s.comer">Comercio Y Administración</span></span>
+            </div>
+          </article>
+          <article class="course-full" data-sector="inform">
+            <span class="course-icon"><i class="bi bi-pc-display" aria-hidden="true"></i></span>
+            <div>
+              <h3 data-i18n="cursos.c.tic">Informática - Tecnologías De La Información</h3>
+              <span class="sector-tag"><i class="bi bi-pc-display" aria-hidden="true"></i> <span data-i18n="cursos.s.inform">Informática</span></span>
+            </div>
+          </article>
+        </div>
+      </section>
+       
+      <!-- ======================= BACHILLERATO TÉCNICO PROFESIONAL ======================= -->
+      <section class="level-block" id="btp">
+        <div class="level-head">
+          <div class="card-icon"><i class="bi bi-tools" aria-hidden="true"></i></div>
+          <div>
+            <h2 data-i18n="cursos.n.btp">Bachillerato Técnico Profesional (BTP)</h2>
+            <p data-i18n="cursos.nd.btp">Formación de nivel medio superior con especialización técnica y prácticas profesionales vinculadas al sector productivo.</p>
+          </div>
+        </div>
+        <div class="course-full-grid">
+          <article class="course-full" data-sector="electr">
+            <span class="course-icon"><i class="bi bi-lightning-charge" aria-hidden="true"></i></span>
+            <div>
+              <h3 data-i18n="cursos.c.instel">Instalaciones Eléctricas</h3>
+              <span class="sector-tag"><i class="bi bi-lightning-charge" aria-hidden="true"></i> <span data-i18n="cursos.s.electr">Electricidad Y Electrónica</span></span>
+            </div>
+          </article>
+          <article class="course-full" data-sector="gastro">
+            <span class="course-icon"><i class="bi bi-cup-hot" aria-hidden="true"></i></span>
+            <div>
+              <h3 data-i18n="cursos.c.cocina">Cocina</h3>
+              <span class="sector-tag"><i class="bi bi-cup-hot" aria-hidden="true"></i> <span data-i18n="cursos.s.gastro">Gastronomía</span></span>
+            </div>
+          </article>
+          <article class="course-full" data-sector="servic">
+            <span class="course-icon"><i class="bi bi-stars" aria-hidden="true"></i></span>
+            <div>
+              <h3 data-i18n="cursos.c.estpers">Estética Personal</h3>
+              <span class="sector-tag"><i class="bi bi-heart-pulse" aria-hidden="true"></i> <span data-i18n="cursos.s.servic">Servicios Personales</span></span>
+            </div>
+          </article>
+          <article class="course-full" data-sector="constr">
+            <span class="course-icon"><i class="bi bi-bricks" aria-hidden="true"></i></span>
+            <div>
+              <h3 data-i18n="cursos.c.edif">Edificaciones De Obra Civil</h3>
+              <span class="sector-tag"><i class="bi bi-bricks" aria-hidden="true"></i> <span data-i18n="cursos.s.constr">Construcción Y Arquitectura</span></span>
+            </div>
+          </article>
+          <article class="course-full" data-sector="gastro">
+            <span class="course-icon"><i class="bi bi-egg-fried" aria-hidden="true"></i></span>
+            <div>
+              <h3 data-i18n="cursos.c.gastro">Gastronomía</h3>
+              <span class="sector-tag"><i class="bi bi-cup-hot" aria-hidden="true"></i> <span data-i18n="cursos.s.gastro">Gastronomía</span></span>
+            </div>
+          </article>
+          <article class="course-full" data-sector="servic">
+            <span class="course-icon"><i class="bi bi-heart-pulse" aria-hidden="true"></i></span>
+            <div>
+              <h3 data-i18n="cursos.c.bienest">Bienestar Y Salud</h3>
+              <span class="sector-tag"><i class="bi bi-heart-pulse" aria-hidden="true"></i> <span data-i18n="cursos.s.servic">Servicios Personales</span></span>
+            </div>
+          </article>
+          <article class="course-full" data-sector="textil">
+            <span class="course-icon"><i class="bi bi-scissors" aria-hidden="true"></i></span>
+            <div>
+              <h3 data-i18n="cursos.c.indum">Indumentaria Textil</h3>
+              <span class="sector-tag"><i class="bi bi-scissors" aria-hidden="true"></i> <span data-i18n="cursos.s.textil">Textil Y Confección De Vestimenta</span></span>
+            </div>
+          </article>
+          <article class="course-full" data-sector="metal">
+            <span class="course-icon"><i class="bi bi-wrench-adjustable" aria-hidden="true"></i></span>
+            <div>
+              <h3 data-i18n="cursos.c.mantind">Mantenimiento Industrial</h3>
+              <span class="sector-tag"><i class="bi bi-gear-wide-connected" aria-hidden="true"></i> <span data-i18n="cursos.s.metal">Metal-Mecánica</span></span>
+            </div>
+          </article>
+          <article class="course-full" data-sector="comer">
+            <span class="course-icon"><i class="bi bi-cart3" aria-hidden="true"></i></span>
+            <div>
+              <h3 data-i18n="cursos.c.comercio">Comercio Y Ventas</h3>
+              <span class="sector-tag"><i class="bi bi-briefcase" aria-hidden="true"></i> <span data-i18n="cursos.s.comer">Comercio Y Administración</span></span>
+            </div>
+          </article>
+          <article class="course-full" data-sector="madera">
+            <span class="course-icon"><i class="bi bi-hammer" aria-hidden="true"></i></span>
+            <div>
+              <h3 data-i18n="cursos.c.muebdis">Mueble Por Diseño</h3>
+              <span class="sector-tag"><i class="bi bi-hammer" aria-hidden="true"></i> <span data-i18n="cursos.s.madera">Madera Y Muebles</span></span>
+            </div>
+          </article>
+          <article class="course-full" data-sector="metal">
+            <span class="course-icon"><i class="bi bi-gear-wide-connected" aria-hidden="true"></i></span>
+            <div>
+              <h3 data-i18n="cursos.c.mecind">Mecánica Industrial</h3>
+              <span class="sector-tag"><i class="bi bi-gear-wide-connected" aria-hidden="true"></i> <span data-i18n="cursos.s.metal">Metal-Mecánica</span></span>
+            </div>
+          </article>
+        </div>
+      </section>
+       
+      <!-- ======================= FORMACIÓN PROFESIONAL BÁSICA ======================= -->
+      <section class="level-block" id="fpb">
+        <div class="level-head">
+          <div class="card-icon"><i class="bi bi-briefcase" aria-hidden="true"></i></div>
+          <div>
+            <h2 data-i18n="cursos.n.fpb">Formación Profesional Básica (FPB)</h2>
+            <p data-i18n="cursos.nd.fpb">Trayectos orientados a una salida laboral concreta, con fuerte carga práctica en taller y oficios técnicos.</p>
+          </div>
+        </div>
+        <div class="course-full-grid">
+          <article class="course-full" data-sector="servic">
+            <span class="course-icon"><i class="bi bi-scissors" aria-hidden="true"></i></span>
+            <div>
+              <h3 data-i18n="cursos.c.estcap">Estética Capilar</h3>
+              <span class="sector-tag"><i class="bi bi-heart-pulse" aria-hidden="true"></i> <span data-i18n="cursos.s.servic">Servicios Personales</span></span>
+            </div>
+          </article>
+          <article class="course-full" data-sector="gastro">
+            <span class="course-icon"><i class="bi bi-basket" aria-hidden="true"></i></span>
+            <div>
+              <h3 data-i18n="cursos.c.alimen">Alimentación</h3>
+              <span class="sector-tag"><i class="bi bi-cup-hot" aria-hidden="true"></i> <span data-i18n="cursos.s.gastro">Gastronomía</span></span>
+            </div>
+          </article>
+          <article class="course-full" data-sector="metal">
+            <span class="course-icon"><i class="bi bi-gear-wide-connected" aria-hidden="true"></i></span>
+            <div>
+              <h3 data-i18n="cursos.c.mecfpb">Mecánica</h3>
+              <span class="sector-tag"><i class="bi bi-gear-wide-connected" aria-hidden="true"></i> <span data-i18n="cursos.s.metal">Metal-Mecánica</span></span>
+            </div>
+          </article>
+        </div>
+      </section>
+       
+      <!-- ======================= CURSOS TÉCNICOS TERCIARIOS ======================= -->
+      <section class="level-block" id="ctt">
+        <div class="level-head">
+          <div class="card-icon"><i class="bi bi-gear" aria-hidden="true"></i></div>
+          <div>
+            <h2 data-i18n="cursos.n.ctt">Curso Técnico Terciario (CTT)</h2>
+            <p data-i18n="cursos.nd.ctt">Carreras terciarias cortas con foco en competencias técnicas específicas y alta empleabilidad.</p>
+          </div>
+        </div>
+        <div class="course-full-grid">
+          <article class="course-full" data-sector="diseno">
+            <span class="course-icon"><i class="bi bi-palette" aria-hidden="true"></i></span>
+            <div>
+              <h3 data-i18n="cursos.c.dgrafico">Diseño Gráfico</h3>
+              <span class="sector-tag"><i class="bi bi-palette" aria-hidden="true"></i> <span data-i18n="cursos.s.diseno">Diseño Gráfico</span></span>
+            </div>
+          </article>
+          <article class="course-full" data-sector="comer">
+            <span class="course-icon"><i class="bi bi-clipboard-data" aria-hidden="true"></i></span>
+            <div>
+              <h3 data-i18n="cursos.c.admin">Administración</h3>
+              <span class="sector-tag"><i class="bi bi-briefcase" aria-hidden="true"></i> <span data-i18n="cursos.s.comer">Comercio Y Administración</span></span>
+            </div>
+          </article>
+          <article class="course-full" data-sector="inform">
+            <span class="course-icon"><i class="bi bi-hdd-network" aria-hidden="true"></i></span>
+            <div>
+              <h3 data-i18n="cursos.c.redes">Redes Y Software</h3>
+              <span class="sector-tag"><i class="bi bi-pc-display" aria-hidden="true"></i> <span data-i18n="cursos.s.inform">Informática</span></span>
+            </div>
+          </article>
+        </div>
+      </section>
+       
+      <!-- ======================= TECNÓLOGO ======================= -->
+      <section class="level-block" id="tec">
+        <div class="level-head">
+          <div class="card-icon"><i class="bi bi-flower1" aria-hidden="true"></i></div>
+          <div>
+            <h2 data-i18n="cursos.n.tec">Tecnólogo</h2>
+            <p data-i18n="cursos.nd.tec">Propuesta terciaria orientada al desarrollo de la producción familiar y agroindustrial de la región.</p>
+          </div>
+        </div>
+        <div class="course-full-grid">
+          <article class="course-full" data-sector="agro">
+            <span class="course-icon"><i class="bi bi-flower1" aria-hidden="true"></i></span>
+            <div>
+              <h3 data-i18n="cursos.c.sistagro">Sistemas Agropecuarios Familiares</h3>
+              <span class="sector-tag"><i class="bi bi-flower2" aria-hidden="true"></i> <span data-i18n="cursos.s.agro">Agropecuario</span></span>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
     $footerScriptAfter = 'assets/js/cursos.js';
     require_once __DIR__ . '/../requires/footer_scripts.php';
     ?>
