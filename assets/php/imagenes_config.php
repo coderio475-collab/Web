@@ -62,4 +62,7 @@ const ENLACES_EXTERNOS = [
     'normativas' => ['Normativas UTU', 'https://www.utu.edu.uy/normativas/'],
     'privacidad' => ['Política de privacidad', 'https://www.utu.edu.uy/wp-content/themes/balpadraUTU/src/documents/politica%20de%20privacidad.pdf'],
     'presentacion' => ['Presentación de la escuela', 'https://www.utu.edu.uy/wp-content/themes/balpadraUTU/src/documents/encuentros/23oct25-litoralnorte/Escuela%20T%C3%A9cnica%20%C2%ABMtro%20Sergio%20Gonz%C3%A1lez%20Olaizola%C2%BB%20%E2%80%93%20Bella%20Uni%C3%B3n.pdf?_t=1761659170'],
+    'anexos_maps' => ['Google Maps · Anexo Polideportivo', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d416.74667343522594!2d-57.60020655531017!3d-30.25961359850142!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95acd7769beb1763%3A0x448ea9061482918d!2sPolideportivo%20Bella%20Uni%C3%B3n!5e0!3m2!1ses!2suy!4v1792886091496!5m2!1ses!2suy'],
+    'anexo_baltasar_maps' => ['Google Maps · Anexo Baltasar Brum', 'https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d4534.6177137073455!2d-57.33179285928548!3d-30.72160204611505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sUbicado%20en%20Jos%C3%A9%20Batlle%20y%20Ord%C3%B3%C3%B1ez%2C%20entre%2025%20de%20Agosto%20y%20Sixto%20Fleitas.!5e0!3m2!1ses!2suy!4v1792886831768!5m2!1ses!2suy'],
+    'anexo_gomensoro_maps' => ['Google Maps · Anexo Tomás Gomensoro', 'https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3440.188711940484!2d-57.440334525283326!3d-30.430751874731353!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2suy!4v1792887114005!5m2!1ses!2suy'],
 ];

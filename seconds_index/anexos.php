@@ -82,11 +82,9 @@ require_once __DIR__ . '/../requires/head.php';
           <p class="mb-1"><strong data-i18n="sedes.secretariaLabel">Secretaría:</strong> 14:00 a 18:00 hs</p>
         </div>
          
-        <!-- Espacio reservado para el mapa de ubicación -->
-        <div class="map-placeholder" role="img" aria-label="Mapa">
-          <i class="bi bi-geo-alt" aria-hidden="true"></i>
-          <strong data-i18n="anexos.mapTitle">Ubicación en Google Maps</strong>
-          <span class="small" data-i18n="anexos.mapNote">Espacio reservado para el mapa — próximamente.</span>
+        <!-- Mapa provisional compartido con los demás anexos hasta recibir sus ubicaciones. -->
+        <div class="map-embed">
+          <iframe src="<?= url_externo('anexos_maps', $enlacesExternos) ?>" title="Ubicación en Google Maps" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
         </div>
       </div>
 
@@ -137,11 +135,9 @@ require_once __DIR__ . '/../requires/head.php';
           <p class="mb-1"><strong data-i18n="sedes.libraryLabel">Biblioteca:</strong> 09:00 a 18:00 hs</p>
         </div>
          
-        <!-- Espacio reservado para el mapa de ubicación -->
-        <div class="map-placeholder" role="img" aria-label="Mapa">
-          <i class="bi bi-geo-alt" aria-hidden="true"></i>
-          <strong data-i18n="anexos.mapTitle">Ubicación en Google Maps</strong>
-          <span class="small" data-i18n="anexos.mapNote">Espacio reservado para el mapa — próximamente.</span>
+        <!-- Mapa provisional compartido con los demás anexos hasta recibir sus ubicaciones. -->
+        <div class="map-embed">
+          <iframe src="<?= url_externo('anexo_baltasar_maps', $enlacesExternos) ?>" title="Ubicación del Anexo Baltasar Brum en Google Maps" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
         </div>
       </div>
 
@@ -187,11 +183,9 @@ require_once __DIR__ . '/../requires/head.php';
           <p class="mb-1"><strong data-i18n="sedes.workshopsLabel">Talleres e infraestructura:</strong> 07:00 a 17:00 hs</p>
         </div>
          
-        <!-- Espacio reservado para el mapa de ubicación -->
-        <div class="map-placeholder" role="img" aria-label="Mapa">
-          <i class="bi bi-geo-alt" aria-hidden="true"></i>
-          <strong data-i18n="anexos.mapTitle">Ubicación en Google Maps</strong>
-          <span class="small" data-i18n="anexos.mapNote">Espacio reservado para el mapa — próximamente.</span>
+        <!-- Mapa provisional compartido con los demás anexos hasta recibir sus ubicaciones. -->
+        <div class="map-embed">
+          <iframe src="<?= url_externo('anexo_gomensoro_maps', $enlacesExternos) ?>" title="Ubicación del Anexo Tomás Gomensoro en Google Maps" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
         </div>
       </div>
     </main>
